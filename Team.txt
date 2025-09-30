@@ -1,16 +1,27 @@
 레시피
 
+토론 주제 {
+	페이지마다 색 어떻게?
+	Header Navigate(로그인, 회원가입, 메인) 누가? 어떻게
+	종합은 누가? 어디에?(김병국, Git new Folder)
+	페이지 레이아웃 정해야함
+}
+
 공통  {
-	Index : 레시피 페이지
-	Header Navigate(로그인, 회원가입, 메인)
-	CSS 페이지 색감 : 강전홍
+	Index : 레시피 페이지 - 김병국
+	CSS 페이지 색감 : 강전홍	
+}
+
+Attribute(CSS) {
 	width : 100%
 	margin-left: 150px;
 	margin-right: 150px;	
 }
 
+
+
 /* 로그인		// 강전홍
-	
+	test005
 */
 
 /* 회원가입	// 박영기
@@ -32,13 +43,11 @@
 	조리 방법
 */
 
-블로그같은 느낌
-페이징 처리 어떻게?
-https://www.semie.cooking/recipe-lab/list/recipe
 
-요리 클래스101
-https://class101.net/ko/search?query=%EC%9A%94%EB%A6%AC&gad_source=1&gad_campaignid=22867003367&gbraid=0AAAAACNquoi9puXo67GJnvWbNw495CF8e&gclid=Cj0KCQjw3OjGBhDYARIsADd-uX7r4u4P7EiPtcKZppPljuBJ3zJhbvITdytDY-QF7ZTzVjAHHIs1p8IaAtJ9EALw_wcB
-
-
-공유를 어떻게 할껀지
-Git, email...etc	
+fixed {
+	공유 : git(https://github.com/devqw010102/Group-Assignment)
+	로그인 페이지 : 강전홍 => Test005
+	회원가입 페이지 : 박영기
+	레시피 페이지(Index) : 김병국
+	레시피 추가 페이지 : 박주승
+}
