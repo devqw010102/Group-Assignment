@@ -1,0 +1,44 @@
+레시피
+
+공통  {
+	Index : 레시피 페이지
+	Header Navigate(로그인, 회원가입, 메인)
+	CSS 페이지 색감 : 강전홍
+	width : 100%
+	margin-left: 150px;
+	margin-right: 150px;	
+}
+
+/* 로그인		// 강전홍
+	
+*/
+
+/* 회원가입	// 박영기
+	
+*/
+
+/* 레시피 페이지		// 김병국
+	요리 이름
+	재료
+	조리 방법
+	조리 시간
+	<div> 9개
+	알고리즘(재료명, 조리방법...etc)
+*/
+
+/* 레시피 추가		// 박주승
+	요리 이름
+	재료
+	조리 방법
+*/
+
+블로그같은 느낌
+페이징 처리 어떻게?
+https://www.semie.cooking/recipe-lab/list/recipe
+
+요리 클래스101
+https://class101.net/ko/search?query=%EC%9A%94%EB%A6%AC&gad_source=1&gad_campaignid=22867003367&gbraid=0AAAAACNquoi9puXo67GJnvWbNw495CF8e&gclid=Cj0KCQjw3OjGBhDYARIsADd-uX7r4u4P7EiPtcKZppPljuBJ3zJhbvITdytDY-QF7ZTzVjAHHIs1p8IaAtJ9EALw_wcB
+
+
+공유를 어떻게 할껀지
+Git, email...etc	
