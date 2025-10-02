@@ -12,11 +12,13 @@
 김병국 : index<br>
 강전홍 : login<br>
 박영기 : register<br>
+박주승 : addReceipt<br>
 
 <h3>폴더 정리</h3>
 KBK : 김병국 개인폴더<br>
 KJH : 강전홍 개인폴더<br>
 PYG : 박영기 개인폴더<br>
+PJS : 박주승 개인폴더<br>
 receipt_page : 완성본(수정중)<br>
 
 <h3>CSS</h3>
@@ -39,5 +41,5 @@ margin-right: 150px<br>
 
 <h3>레시피 추가 페이지</h3>
 담당 : 박주승<br>
-파일 : <br>
+파일 : addReceipt.html<br>
 레시피 내용 : 레시피 페이지와 동일, 조리 방법 입력(300자 제한), 카테고리 추가
