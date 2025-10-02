@@ -4,9 +4,9 @@
 김병국, 강전홍, 박영기, 박주승
 
 <h3>Todo</h3>
-1. Repository 폴더 정리<br>
-2. addReceipt(가명).html 추가<br>
-3. index.html 이미지, 텍스트 추가<br>
+1. addReceipt(가명).html 추가<br>
+2. index.html 이미지, 텍스트 추가<br>
+3. receipt_object.js 레시피 객체 추가<br>
 
 <h3>페이지 담당</h3>
 김병국 : index<br>
