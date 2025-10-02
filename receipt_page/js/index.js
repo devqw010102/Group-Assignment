@@ -33,13 +33,6 @@ for(let i = 0; i < 10; i++) {
     tabs.appendChild(tab3);
 
     // Content
-    // 컨텐츠 추가는 배열로 할 것
-    // ex) let content = [{
-    // 'asdfasdf',
-    // 'fdasfdas',
-    // ...etc
-    // }]
-    // 배열 객체로 
     const content1 = document.createElement('div');
     content1.className = 'tab-content active';
     content1.innerText = `Box ${i + 1} - Content 1`;
