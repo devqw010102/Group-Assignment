@@ -3,7 +3,7 @@
 <h3>조별과제</h3>
 김병국, 강전홍, 박영기, 박주승
 
-<h3>Todo</h3>
+<h3>★Todo★</h3>
 1. Index 페이지 이미지 크기 조절<br>
 2. recipe 재료 배열 Tab > Content 추가 안됨<br>
 3. recipe_object.js 레시피 객체 추가<br>
