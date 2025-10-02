@@ -7,6 +7,10 @@
 1. Index 페이지 이미지 크기 조절<br>
 2. recipe 재료 배열 Tab > Content 추가 안됨<br>
 3. recipe_object.js 레시피 객체 추가<br>
+4. addRecipe Plan b 가능성 있으니 준비
+
+<h3>★FeedBack★</h3>
+1. 레시피 철자 = 수정 完
 
 <h3>페이지 담당</h3>
 김병국 : index<br>
