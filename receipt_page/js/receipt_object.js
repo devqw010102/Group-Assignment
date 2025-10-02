@@ -3,6 +3,8 @@
 
     {
     image : 이미지, 파일은 images폴더 안에, food-{i}.jpg 로 저장
+    name : 요리 이름
+    category : 카테고리, "카테고리" 작성
     ingredient : 재료, [재료이름 : 수량] 배열 형식으로 작성할 것
     cook : 조리방법, "조리 방법" 작성할 것
     }
@@ -17,52 +19,82 @@
 export const tabContents = [
   {
     image: "images/food-1.jpg",
+    name : "새송이버섯버터굴소스볶음",
+    category : "볶음 요리",
     ingredient : ["미니새송이버섯 : 1팩", "버터 : 20g", "굴소스 : 1T", "진간장 : 0.5T", "통깨 약간"],
     cook : "새송이버섯은 길게 편 썰기, 팬을 달군 후 버터 20그램을 녹인다. 버터가 녹으면 새송이 버섯을 넣고 볶는다. 버섯이 반쯤 익었을 때 굴소스 1스푼 넣는다. 진간장도 0.5T 넣는다. 통깨도 넣어서 섞는다."
+    // https://www.10000recipe.com/recipe/6993517
   },
   {
-    image: "images/food-2.jpg",
-    ingredient: ["Dog", "Cat", "Bird"],
-    cook: ["Fish", "Rabbit", "Hamster"]
+    image: "images/food-1.jpg",
+    name : "새송이버섯버터굴소스볶음",
+    category : "볶음 요리",
+    ingredient : ["미니새송이버섯 : 1팩", "버터 : 20g", "굴소스 : 1T", "진간장 : 0.5T", "통깨 약간"],
+    cook : "새송이버섯은 길게 편 썰기, 팬을 달군 후 버터 20그램을 녹인다. 버터가 녹으면 새송이 버섯을 넣고 볶는다. 버섯이 반쯤 익었을 때 굴소스 1스푼 넣는다. 진간장도 0.5T 넣는다. 통깨도 넣어서 섞는다."
+    // https://www.10000recipe.com/recipe/6993517
   },
   {
-    image: "https://via.placeholder.com/150?text=Image+3",
-    list1: ["HTML", "CSS", "JS"],
-    list2: ["React", "Vue", "Angular"]
+    image: "images/food-1.jpg",
+    name : "새송이버섯버터굴소스볶음",
+    category : "볶음 요리",
+    ingredient : ["미니새송이버섯 : 1팩", "버터 : 20g", "굴소스 : 1T", "진간장 : 0.5T", "통깨 약간"],
+    cook : "새송이버섯은 길게 편 썰기, 팬을 달군 후 버터 20그램을 녹인다. 버터가 녹으면 새송이 버섯을 넣고 볶는다. 버섯이 반쯤 익었을 때 굴소스 1스푼 넣는다. 진간장도 0.5T 넣는다. 통깨도 넣어서 섞는다."
+    // https://www.10000recipe.com/recipe/6993517
   },
-  {
-    image: "https://via.placeholder.com/150?text=Image+4",
-    list1: ["Korea", "Japan", "USA"],
-    list2: ["China", "UK", "Germany"]
+    {
+    image: "images/food-1.jpg",
+    name : "새송이버섯버터굴소스볶음",
+    category : "볶음 요리",
+    ingredient : ["미니새송이버섯 : 1팩", "버터 : 20g", "굴소스 : 1T", "진간장 : 0.5T", "통깨 약간"],
+    cook : "새송이버섯은 길게 편 썰기, 팬을 달군 후 버터 20그램을 녹인다. 버터가 녹으면 새송이 버섯을 넣고 볶는다. 버섯이 반쯤 익었을 때 굴소스 1스푼 넣는다. 진간장도 0.5T 넣는다. 통깨도 넣어서 섞는다."
+    // https://www.10000recipe.com/recipe/6993517
   },
-  {
-    image: "https://via.placeholder.com/150?text=Image+5",
-    list1: ["Sun", "Moon", "Star"],
-    list2: ["Earth", "Mars", "Venus"]
+    {
+    image: "images/food-1.jpg",
+    name : "새송이버섯버터굴소스볶음",
+    category : "볶음 요리",
+    ingredient : ["미니새송이버섯 : 1팩", "버터 : 20g", "굴소스 : 1T", "진간장 : 0.5T", "통깨 약간"],
+    cook : "새송이버섯은 길게 편 썰기, 팬을 달군 후 버터 20그램을 녹인다. 버터가 녹으면 새송이 버섯을 넣고 볶는다. 버섯이 반쯤 익었을 때 굴소스 1스푼 넣는다. 진간장도 0.5T 넣는다. 통깨도 넣어서 섞는다."
+    // https://www.10000recipe.com/recipe/6993517
   },
-  {
-    image: "https://via.placeholder.com/150?text=Image+6",
-    list1: ["Car", "Bike", "Bus"],
-    list2: ["Train", "Plane", "Boat"]
+    {
+    image: "images/food-1.jpg",
+    name : "새송이버섯버터굴소스볶음",
+    category : "볶음 요리",
+    ingredient : ["미니새송이버섯 : 1팩", "버터 : 20g", "굴소스 : 1T", "진간장 : 0.5T", "통깨 약간"],
+    cook : "새송이버섯은 길게 편 썰기, 팬을 달군 후 버터 20그램을 녹인다. 버터가 녹으면 새송이 버섯을 넣고 볶는다. 버섯이 반쯤 익었을 때 굴소스 1스푼 넣는다. 진간장도 0.5T 넣는다. 통깨도 넣어서 섞는다."
+    // https://www.10000recipe.com/recipe/6993517
   },
-  {
-    image: "https://via.placeholder.com/150?text=Image+7",
-    list1: ["Coffee", "Tea", "Juice"],
-    list2: ["Water", "Milk", "Soda"]
+    {
+    image: "images/food-1.jpg",
+    name : "새송이버섯버터굴소스볶음",
+    category : "볶음 요리",
+    ingredient : ["미니새송이버섯 : 1팩", "버터 : 20g", "굴소스 : 1T", "진간장 : 0.5T", "통깨 약간"],
+    cook : "새송이버섯은 길게 편 썰기, 팬을 달군 후 버터 20그램을 녹인다. 버터가 녹으면 새송이 버섯을 넣고 볶는다. 버섯이 반쯤 익었을 때 굴소스 1스푼 넣는다. 진간장도 0.5T 넣는다. 통깨도 넣어서 섞는다."
+    // https://www.10000recipe.com/recipe/6993517
   },
-  {
-    image: "https://via.placeholder.com/150?text=Image+8",
-    list1: ["Book", "Pen", "Paper"],
-    list2: ["Eraser", "Ruler", "Notebook"]
+    {
+    image: "images/food-1.jpg",
+    name : "새송이버섯버터굴소스볶음",
+    category : "볶음 요리",
+    ingredient : ["미니새송이버섯 : 1팩", "버터 : 20g", "굴소스 : 1T", "진간장 : 0.5T", "통깨 약간"],
+    cook : "새송이버섯은 길게 편 썰기, 팬을 달군 후 버터 20그램을 녹인다. 버터가 녹으면 새송이 버섯을 넣고 볶는다. 버섯이 반쯤 익었을 때 굴소스 1스푼 넣는다. 진간장도 0.5T 넣는다. 통깨도 넣어서 섞는다."
+    // https://www.10000recipe.com/recipe/6993517
   },
-  {
-    image: "https://via.placeholder.com/150?text=Image+9",
-    list1: ["Rock", "Pop", "Jazz"],
-    list2: ["Classical", "Hip-hop", "EDM"]
+    {
+    image: "images/food-1.jpg",
+    name : "새송이버섯버터굴소스볶음",
+    category : "볶음 요리",
+    ingredient : ["미니새송이버섯 : 1팩", "버터 : 20g", "굴소스 : 1T", "진간장 : 0.5T", "통깨 약간"],
+    cook : "새송이버섯은 길게 편 썰기, 팬을 달군 후 버터 20그램을 녹인다. 버터가 녹으면 새송이 버섯을 넣고 볶는다. 버섯이 반쯤 익었을 때 굴소스 1스푼 넣는다. 진간장도 0.5T 넣는다. 통깨도 넣어서 섞는다."
+    // https://www.10000recipe.com/recipe/6993517
   },
-  {
-    image: "https://via.placeholder.com/150?text=Image+10",
-    list1: ["Dog Food", "Leash", "Toy"],
-    list2: ["Bed", "Brush", "Treats"]
+    {
+    image: "images/food-1.jpg",
+    name : "새송이버섯버터굴소스볶음",
+    category : "볶음 요리",
+    ingredient : ["미니새송이버섯 : 1팩", "버터 : 20g", "굴소스 : 1T", "진간장 : 0.5T", "통깨 약간"],
+    cook : "새송이버섯은 길게 편 썰기, 팬을 달군 후 버터 20그램을 녹인다. 버터가 녹으면 새송이 버섯을 넣고 볶는다. 버섯이 반쯤 익었을 때 굴소스 1스푼 넣는다. 진간장도 0.5T 넣는다. 통깨도 넣어서 섞는다."
+    // https://www.10000recipe.com/recipe/6993517
   }
 ];
