@@ -8,3 +8,6 @@ index, test.css : 개인 연습<br>
 
 <h3>images</h3>
 receipt.png : 페이지 상단 로고
+
+<h3>참고</h3>
+https://www.10000recipe.com/index.html
