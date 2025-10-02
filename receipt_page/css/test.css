@@ -80,40 +80,75 @@ a:visited, a:link {
     box-sizing: border-box;
 }
 
-/* 레시피 */
+.container{
+    width : 1200px;
+    margin : 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 2fr); 
+    gap: 10px;
+    justify-content: center;
+    background-color: white;
+}
+
 .box {
-    border : 1px solid #ccc;
-    padding : 15px;
-    margin-bottom: 20px;
-    margin : 20px auto;
-    width : 65%;
+    width : 50%;
     height : 300px;
-    max-height : 500px; 
+    border : 1px solid black;
+    transition: all 0.4s ease;
+    padding : 10px;
+    margin : 30px;  
+}
+
+.button {
+    /* 버튼정렬 */
+}
+
+.box.expanded {
+    width : 90%;
+    height : 90%;
+}
+
+/* 탭 메뉴 */
+.tab-box {
+    border : 1px solid #ccc;
 }
 
 .tabs {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
+    display: flex;
+    gap : 10px;
+    margin : 5px;
 }
 
 .tab {
-  padding: 6px 12px;
-  background: #eee;
-  border: none;
-  cursor: pointer;
+    cursor: pointer;
+    border : none;
+    padding : 5px;
 }
 
 .tab.active {
-  background: #ddd;
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .tab-content {
-  display: none;
+    display: none;
 }
 
 .tab-content.active {
-  display: block;
+    display: block;
 }
+
+/* 확대, Content Display 처리 */
+.zoom {
+    /* 버튼 디자인 */
+    cursor: pointer;
+}
+
+.text {
+    display: none;
+}
+
+.text.visible {
+    display: block;
+}
+
 
