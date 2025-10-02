@@ -38,18 +38,23 @@ tabContents.forEach((data, i) => {
     imageRow.style.display = 'flex';
     imageRow.style.alignItems = 'center';
     imageRow.style.gap = '20px';
+
     // 이미지
+    
     const img = document.createElement('img');
     img.src = data.image;
-    // img.alt = `요리 이미지 ${i + 1}`;
+    img.alt = `요리 이미지 ${i + 1}`;   // 대체 텍스트 어떻게 처리할지 FeedBack 요망
     img.style.width = '300px';
     img.style.height = '250px';
     img.style.borderRadius = '8px';
 
+    // 카테고리
     const category = document.createElement('div');
     category.innerText = `카테고리: ${data.category || '없음'}`;
     category.style.fontSize = '16px';
     category.style.fontWeight = 'bold';
+
+    // 이름 추가 예정
 
     imageRow.appendChild(img);
     imageRow.appendChild(category);
@@ -69,7 +74,7 @@ tabContents.forEach((data, i) => {
     // Tab3
     const content3 = document.createElement('div');
     content3.className = 'tab-content';
-    content3.innerHTML = data.cook.replace(/\n/g, "<br>"); // 줄바꿈 처리
+    content3.innerHTML = data.cook.replace(/\n/g, "<br>"); // 줄바꿈 처리예정 코드
 
     tab1.addEventListener('click', () => {
         setActiveTab(tab1, [tab1, tab2, tab3], content1, [content1, content2, content3]);
