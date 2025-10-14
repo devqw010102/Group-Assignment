@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>레시피 업로드</title>
+  <link rel="stylesheet" href="css/addRecipe-1.css">
+</head>
+<body>
+  <!-- 헤더 -->
+  <div id="wrap">
+    <div class="header">
+      <div class="headerLogo">
+        <img src="images/recipe.png" id="logo" alt="logo">
+      </div>
+      <div class="navigate">
+        <ul>
+          <li><a href="login.html">로그인</a></li>
+          <li><a href="register.html">회원가입</a></li>
+          <li><a href="index.html">레시피</a></li>
+          <li><a href="addRecipe-1.html">레시피 추가</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 메인 -->
+  <main>
+    <div id="recipeForm">
+      <label for="recipeTitle">레시피 이름</label>
+      <input type="text" id="recipeTitle" class="recipeInput" placeholder="예) 담백한 두부스테이크"/>
+
+      <label for="recipeCategory">카테고리</label>
+      <select id="recipeCategory" class="recipeInput">
+        <option>한식</option>
+        <option>양식</option>
+        <option>중식</option>
+        <option>일식</option>
+        <option>디저트</option>
+        <option>기타</option>
+      </select>
+
+      <!-- 순서 변경: 재료가 설명 위로 -->
+      <p class="ingredientLabel">레시피 재료</p>
+      <textarea id="recipeIngredients" class="recipeInput" 
+        placeholder="미니새송이버섯 : 1팩
+버터 : 20g
+굴소스 : 1T
+진간장 : 0.5T
+통깨 약간"></textarea>
+
+      <label for="recipeDesc">레시피 설명</label>
+      <textarea id="recipeDesc" class="recipeInput" placeholder="레시피 설명을 입력하세요"></textarea>
+
+      <label for="recipeImage">대표 사진</label>
+      <input type="file" id="recipeImage" class="recipeInput" accept="image/*" />
+      <span class="helpText">(JPG/PNG 권장 · 1장)</span>
+
+      <div id="formButtons">
+        <button type="button" id="btnSubmit">업로드</button>
+        <button type="button" id="btnCancel">취소</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/addRecipe-1.js"></script>
+</body>
+</html>
+
+
+
+
+
+
