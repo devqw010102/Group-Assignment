@@ -2,7 +2,7 @@
 import { tabContents } from "./recipe_object.js";
 
 // import Object Test - success
-console.log(tabContents[0]);
+// console.log(tabContents[0]);
 
 // Make box
 const container = document.getElementById('boxs');
@@ -33,7 +33,7 @@ tabContents.forEach((data, i) => {
     const content1 = document.createElement('div');
     content1.className = 'tab-content active';
 
-    // 이미지 Div
+    // 이미지 Div + 카테고리 이름 Div
     const imageRow = document.createElement('div');
     imageRow.style.display = 'flex';
     imageRow.style.alignItems = 'center';
@@ -44,37 +44,73 @@ tabContents.forEach((data, i) => {
     const img = document.createElement('img');
     img.src = data.image;
     img.alt = `요리 이미지 ${i + 1}`;   // 대체 텍스트 어떻게 처리할지 FeedBack 요망
-    img.style.width = '300px';
-    img.style.height = '250px';
+    img.style.width = '250px';
+    img.style.height = '230px';
     img.style.borderRadius = '8px';
 
     // 카테고리
     const category = document.createElement('div');
     category.innerText = `카테고리: ${data.category || '없음'}`;
-    category.style.fontSize = '16px';
+    category.style.fontSize = '1.2em';
     category.style.fontWeight = 'bold';
 
-    // 이름 추가 예정
+    // 이름
+
+    const name = document.createElement('div');
+    name.innerText = `이름 : ${data.name || '없음'}`;
+    name.style.fontSize = '1.2em';
+    name.style.fontWeight = 'bold';
+
+    // Div 안의 요소 추가
 
     imageRow.appendChild(img);
     imageRow.appendChild(category);
+    imageRow.appendChild(name);
     content1.appendChild(imageRow);
 
-    // Tab2 웨않뒈
+    // Tab2 
     const content2 = document.createElement('div');
+    
     content2.className = 'tab-content';
     const ul = document.createElement('ul');
+    ul.style.display = 'flex';
+    ul.style.flexWrap = 'wrap';
+    ul.style.gap = '10px';
+    ul.style.paddingTop = '10px';
     data.ingredient.forEach(item => {
         const li = document.createElement('li');
         li.textContent = item;
+        li.style.padding = '5px';
+        li.style.border = '1px solid black';
         ul.appendChild(li);
     });
     content2.appendChild(ul);
 
-    // Tab3
+
+    // Tab3 only one line code
+    // const content3 = document.createElement('div');
+    // content3.className = 'tab-content';
+    // content3.innerHTML = data.cook.replace(/\n/g, "<br>"); // 줄바꿈 처리예정 코드
+
+    // Tab3 Object
     const content3 = document.createElement('div');
     content3.className = 'tab-content';
-    content3.innerHTML = data.cook.replace(/\n/g, "<br>"); // 줄바꿈 처리예정 코드
+    const cookUl = document.createElement('ul');
+    cookUl.style.display = 'flex';
+    cookUl.style.flexWrap = 'wrap';
+    cookUl.style.gap = '10px';
+    cookUl.style.padding = '10px';
+
+    data.cook.forEach(item => {
+        const cookLi = document.createElement('li');
+        cookLi.textContent = item;
+        cookLi.style.listStyle = 'decimal';
+        cookLi.style.listStylePosition = 'inside';
+        cookLi.style.padding = '5px';
+        cookLi.style.border = '1px solid black';
+        cookUl.appendChild(cookLi);
+    });
+    content3.appendChild(cookUl);
 
     tab1.addEventListener('click', () => {
         setActiveTab(tab1, [tab1, tab2, tab3], content1, [content1, content2, content3]);

@@ -31,7 +31,8 @@
 }
 
 .navigate ul, li {
-    list-style: none;
+    list-style : none;
+    /* decimal */
 }
 
 .navigate ul {
@@ -121,4 +122,3 @@
 .tab-content.active {
   display: block;
 }
-
