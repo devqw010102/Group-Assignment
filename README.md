@@ -4,14 +4,14 @@
 김병국, 강전홍, 박영기, 박주승
 
 <h3>★Todo★</h3>
-1. Index 페이지 이미지 크기 조절<br>
-2. recipe 재료 배열 Tab > Content 추가 안됨<br>
-3. recipe_object.js 레시피 객체 추가<br>
-4. addRecipe Plan b 가능성 있으니 준비
-5. index.js Tab1 이름 추가 해야됨
+1. recipe_object.js 레시피 객체 추가<br>
+2. addRecipe Plan b 가능성 있으니 준비
 
 <h3>★FeedBack★</h3>
-1. 레시피 철자 = 수정 完
+1. 레시피 철자 = 수정 完<br>
+2. Index 페이지 이미지 크기 조절 完<br>
+3. 재료 배열, 페이지에 추가 完<br>
+4. Tab1 이름 추가 完
 
 <h3>페이지 담당</h3>
 김병국 : index<br>
