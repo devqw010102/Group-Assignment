@@ -11,6 +11,7 @@
     1. SNS 로그인 추가
         1-1) [구글 로그인] https://srrymn.tistory.com/49
         1-2) https://srrymn.tistory.com/50?category=1211097
+        1-3) [네이버 로그인] https://thecorative.tistory.com/entry/SNS%EB%A1%9C%EA%B7%B8%EC%9D%B8%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%A1%9C%EA%B7%B8%EC%9D%B8-javascript%EB%A1%9C-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0-theCoding#google_vignette
     
     2. 회원 정보 수정
         2-1) MemberUpdate.html 김병국 작성중
