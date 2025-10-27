@@ -7,19 +7,17 @@
 ---
 
 ### Todo
-<ul>
-  <li>
-      1. recipe_object.js 레시피 객체 추가
-  </li>
-  <li>
+<pre>
+    1. recipe_object.js 레시피 객체 추가
     2. addRecipe Plan b 가능성 있으니 준비
-  </li>
-</ul>
+</pre>
 
 ---
 
 ### FeedBack
-
+<pre>
+  1. 
+</pre>
 <ul>
   <li>
     1. 레시피 철자 = 수정 完
