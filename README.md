@@ -9,10 +9,12 @@
 ### Todo
 <pre>
     1. SNS 로그인 추가
-        1-1) 구글링 필요
+        1-1) [구글 로그인] https://srrymn.tistory.com/49
+        1-2) https://srrymn.tistory.com/50?category=1211097
     
     2. 회원 정보 수정
-        2-1) MemberUpdate.html 작성 필요
+        2-1) MemberUpdate.html 김병국 작성중
+        2-2) 레이아웃, 인원 할당 토의 필요
     
     3. 레시피 정보 수정, 삭제
         3-1) 레시피 페이지 Tab Menu에 수정, 삭제 버튼 추가
