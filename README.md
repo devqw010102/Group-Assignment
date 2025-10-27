@@ -1,51 +1,105 @@
 # 레시피 페이지 만들기
 
-<h3>조별과제</h3>
+### 조별과제
+
 김병국, 강전홍, 박영기, 박주승
 
-<h3>★Todo★</h3>
-1. recipe_object.js 레시피 객체 추가<br>
-2. addRecipe Plan b 가능성 있으니 준비
+---
 
-<h3>★FeedBack★</h3>
-1. 레시피 철자 = 수정 完<br>
-2. Index 페이지 이미지 크기 조절 完<br>
-3. 재료 배열, 페이지에 추가 完<br>
-4. Tab1 이름 추가 完
+### Todo
+<ul>
+  <li>
+      1. recipe_object.js 레시피 객체 추가
+  </li>
+  <li>
+    2. addRecipe Plan b 가능성 있으니 준비
+  </li>
+</ul>
 
-<h3>페이지 담당</h3>
-김병국 : index<br>
-강전홍 : login<br>
-박영기 : register<br>
-박주승 : addRecipe<br>
+---
 
-<h3>폴더 정리</h3>
-KBK : 김병국 개인폴더<br>
-KJH : 강전홍 개인폴더<br>
-PYG : 박영기 개인폴더<br>
-PJS : 박주승 개인폴더<br>
-recipe_page : 완성본(수정중)<br>
+### FeedBack
 
-<h3>CSS</h3>
-width : 100%<br>
-margin-left: 150px<br>
-margin-right: 150px<br>
+<ul>
+  <li>
+    1. 레시피 철자 = 수정 完
+  </li>
+  <li>
+    2. Index 페이지 이미지 크기 조절 完
+  </li>
+  <li>
+    3. 재료 배열, 페이지에 추가 完
+  </li>
+  <li>
+    4. Tab1 이름 추가 完
+  </li>
+</ul>
 
-<h3>로그인 페이지</h3>
-담당 : 강전홍<br>
-파일 : login.html
+---
 
-<h3>회원가입 페이지</h3>
-담당 : 박영기<br>
-파일 : register.html
+### 페이지 담당
 
-<h3>레시피 페이지</h3>
-담당 : 김병국<br>
-파일 : index.html<br>
-레시피 내용 : 이미지, 이름, 재료, 조리방법<br>
-index.js 주석 추가 完
+ | 김병국 | 강전홍 | 박영기 | 박주승 |
+ | ----- | ------ | ------| ------|
+ | index | login | register | addRecipe |
 
-<h3>레시피 추가 페이지</h3>
-담당 : 박주승<br>
-파일 : addRecipe.html<br>
-레시피 내용 : 레시피 페이지와 동일, 조리 방법 입력, 카테고리 추가
+---
+
+### 폴더 정리
+
+<table>
+  <tr>
+    <td>폴더 이름</td>
+    <td>폴더 내용</td>
+  </tr>
+  <tr>
+    <td>KBK</td>
+    <td>김병국 개인폴더</td>
+  </tr>
+  <tr>
+    <td>KJH</td>
+    <td>강전홍 개인폴더</td>
+  </tr>
+  <tr>
+    <td>PYG</td>
+    <td>박영기 개인폴더</td>
+  </tr>
+  <tr>
+    <td>PJS</td>
+    <td>박주승 개인폴더</td>
+  </tr>
+  <tr>
+    <td>recipe_page</td>
+    <td>페이지 종합 폴더</td>
+  </tr>
+</table>
+
+---
+
+#### 로그인 페이지
+<pre>
+  담당 : 강전홍
+  파일 : login.html, login.js, login.css
+</pre>
+
+#### 회원가입 페이지
+<pre>
+  담당 : 박영기
+  파일 : register.html, register.css
+</pre>
+
+#### 레시피 페이지
+<pre>
+  담당 : 김병국
+  파일 : index.html, index.css, index.js, recipe_object.js
+  레시피 내용 : 이미지, 이름, 재료, 조리방법
+
+  index.js 주석 추가 完
+</pre>
+
+#### 레시피 추가 페이지
+<pre>
+  담당 : 박주승
+  파일 : addRecipt.html, addRecipt.css, addRecipt.js
+  레시피 내용 : 레시피 페이지와 동일, 조리 방법 입력, 카테고리 추가
+</pre>
