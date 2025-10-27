@@ -8,30 +8,31 @@
 
 ### Todo
 <pre>
-    1. recipe_object.js 레시피 객체 추가
-    2. addRecipe Plan b 가능성 있으니 준비
+    1. SNS 로그인 추가
+        1-1) 구글링 필요
+    
+    2. 회원 정보 수정
+        2-1) MemberUpdate.html 작성 필요
+    
+    3. 레시피 정보 수정, 삭제
+        3-1) 레시피 페이지 Tab Menu에 수정, 삭제 버튼 추가
+        3-2) Recipe_update.html 작성할 것인지 addRecipe로 연계할지 토의 필요
+    
+    4. 레시피 입력 재료처럼 수정
+        4-1) addRecipe.html 레시피 입력 칸 수정 필요
+    
+    5. recipe_object.js 레시피 객체 추가
 </pre>
 
 ---
 
-### FeedBack
+### 수정사항
 <pre>
-  1. 
-</pre>
-<ul>
-  <li>
     1. 레시피 철자 = 수정 完
-  </li>
-  <li>
     2. Index 페이지 이미지 크기 조절 完
-  </li>
-  <li>
     3. 재료 배열, 페이지에 추가 完
-  </li>
-  <li>
     4. Tab1 이름 추가 完
-  </li>
-</ul>
+</pre>
 
 ---
 
@@ -101,3 +102,6 @@
   파일 : addRecipt.html, addRecipt.css, addRecipt.js
   레시피 내용 : 레시피 페이지와 동일, 조리 방법 입력, 카테고리 추가
 </pre>
+
+### Need
+
