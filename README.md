@@ -118,3 +118,7 @@
     파일 : memberUpdate.html, memberUpdate.css, memberUpdate.js
     내용 : 로그인된 회원 정보의 수정(아이디, 비밀번호)
 </pre>
+
+### ERD
+<img width="644" height="456" alt="ERD-diagram" src="https://github.com/user-attachments/assets/cdcffb11-2ad7-478e-b8ff-130ce25c32b8" />
+
