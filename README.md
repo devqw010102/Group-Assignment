@@ -120,5 +120,5 @@
 </pre>
 
 ### ERD
-<img width="644" height="456" alt="ERD-diagram" src="https://github.com/user-attachments/assets/cdcffb11-2ad7-478e-b8ff-130ce25c32b8" />
+<img width="831" height="447" alt="ERD-diagram" src="https://github.com/user-attachments/assets/fa4a21d2-be99-4d41-876a-3316c13ae17d" />
 
