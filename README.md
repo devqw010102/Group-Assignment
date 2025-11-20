@@ -77,7 +77,11 @@
   </tr>
   <tr>
     <td>recipe_page</td>
-    <td>페이지 종합 폴더</td>
+    <td>페이지 종합 폴더(html)</td>
+  </tr>
+  <tr>
+      <td>recipe_page_2_JSP</td>
+      <td>페이지 종합 폴더(JSP)</td>
   </tr>
 </table>
 
