@@ -1,0 +1,271 @@
+/* ============ 초기화 ============ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans KR", sans-serif; */
+  background: #fff;
+  color: #222;
+}
+
+/* ============ 헤더 ============ */
+#wrap {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.header {
+  background: #74B243;
+  display: flex;
+  justify-content: center; 
+}
+
+#logo {
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+}
+
+/* Navigate */
+.navigate {
+
+}
+
+.navigate ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 10px 0 0 10px;
+  padding: 0;
+}
+
+.navigate li {
+  padding: 10px;
+  margin: 10px;
+  color: #fff;
+  box-sizing: border-box;
+  width: 200px;
+  cursor: pointer;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.navigate li:first-child {
+  margin-left: 20px;
+}
+
+.navigate a:visited, a:link {
+    text-decoration: none;
+    color : white;
+}
+
+
+.navigate li:hover {
+  background: rgba(255, 255, 255, .12);
+}
+
+/* Content */
+.content {
+    background-color: #F1F1F2;
+    padding : 10px;
+}
+
+.container {
+    width : 1200px;
+    margin : 0 auto;
+    display: grid;
+    grid-template-columns: repeat(1, 2fr); 
+    gap: 10px;
+    justify-content: center;
+    background-color: white;    
+    padding : 30px;
+    box-sizing: border-box;
+}
+
+#recipeForm {
+  width: clamp(640px, 70vw, 900px);
+  margin: 30px auto 0;
+  border: 2px solid #ddd;
+  background: #fff;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 6px rgba(0,0,0,.06);
+}
+
+/* ============ 인풋 공통 ============ */
+.recipeInput {
+  display: block;
+  margin: 0 0 20px;   /* 기존 14px → 20px */
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #fff;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* 개별 조정 */
+#recipeTitle {
+  width: 300px;
+}
+
+#recipeCategory {
+  width: 300px;
+}
+
+#recipeDesc {
+  height: 130px;
+  resize: vertical;
+}
+
+.helpText {
+  display: block;
+  margin: -6px 0 14px;
+  color: #666;
+  font-size: 12px;
+}
+
+/* ============ 재료 입력칸 ============ */
+.ingredientBox {
+  margin: 0 0 14px;
+}
+
+.ingredientInputs {
+  display: grid;
+  grid-template-columns: 1fr 120px 120px auto;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.ingredientInputs input,
+.ingredientInputs select {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #fff;
+}
+
+#btnAddIng {
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #f7f7f7;
+  cursor: pointer;
+}
+
+#btnAddIng:hover {
+  background: #eee;
+}
+
+.ingredientList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ingRow {
+  display: grid;
+  grid-template-columns: 1fr 120px 120px 56px;
+  gap: 10px;
+  align-items: center;
+}
+
+.ingRow input,
+.ingRow select {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.ingDel {
+  padding: 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.ingDel:hover {
+  background: #fee;
+  border-color: #e99;
+}
+
+/* ============ 버튼 영역 ============ */
+#formButtons {
+  margin: 16px 0 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+button {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #f7f7f7;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background: #eee;
+}
+
+/* ============ 반응형 ============ */
+@media (max-width: 768px) {
+  .ingredientInputs {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ingRow {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  #recipeForm {
+    width: 100%;
+    margin: 20px auto 0;
+    border-left: none;
+    border-right: none;
+    padding: 16px;
+    box-shadow: none;
+  }
+
+  #recipeTitle,
+  #recipeCategory {
+    width: 100%;  /* 모바일에서는 꽉 차게 */
+  }
+
+  .ingredientInputs {
+    grid-template-columns: 1fr;
+  }
+
+  .ingRow {
+    grid-template-columns: 1fr;
+  }
+
+  #formButtons {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  #formButtons button {
+    width: 100%;
+  }
+}
+label {
+  display: block;
+  margin-bottom: 6px;   /* label과 input 사이 간격 */
+  font-weight: 600;     /* 글자 조금 두껍게 */
+}

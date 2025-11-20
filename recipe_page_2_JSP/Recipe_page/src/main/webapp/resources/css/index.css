@@ -1,0 +1,124 @@
+* {
+    margin : 0;
+    padding : 0;
+    box-sizing: border-box;
+}
+
+#wrap {
+    width : 100%;
+    margin : 0 auto;
+}
+
+/* Header */
+
+.header {
+    background-color: #74B243;
+    display: flex;
+    justify-content: center;
+    
+}
+
+#logo {
+    width : 100px;
+    height : 100px;
+    margin-right : 10px;
+}
+
+/* Navigate */
+
+.navigate {
+
+}
+
+.navigate ul, li {
+    list-style : none;
+    /* decimal */
+}
+
+.navigate ul {
+    display: flex;
+    justify-content: center;
+    margin-left : 10px;
+    margin-top : 10px;
+}
+
+.navigate li {
+    padding : 10px;
+    margin : 10px;
+    color : white;
+    box-sizing: border-box;
+    width : 200px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.navigate li:first-child {
+    margin-left : 20px;
+}
+
+.navigate a:visited, a:link {
+    text-decoration: none;
+    color : white;
+}
+
+.navigate li:hover {
+  background: rgba(255, 255, 255, .12);
+}
+
+/* Content */
+.content {
+    background-color: #F1F1F2;
+    padding : 10px;
+}
+
+.container {
+    width : 1200px;
+    margin : 0 auto;
+    display: grid;
+    grid-template-columns: repeat(1, 2fr); 
+    gap: 10px;
+    justify-content: center;
+    background-color: white;    
+    padding : 30px;
+    box-sizing: border-box;
+}
+
+/* 레시피 */
+.box {
+    border : 1px solid #ccc;
+    padding : 15px;
+    margin-bottom: 20px;
+    margin : 20px auto;
+    width : 65%;
+    height : 300px;
+    height : 300px;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.tab {
+  padding: 6px 12px;
+  background: #eee;
+  border: none;
+  cursor: pointer;
+}
+
+.tab.active {
+  background: #ddd;
+  font-weight: bold;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}

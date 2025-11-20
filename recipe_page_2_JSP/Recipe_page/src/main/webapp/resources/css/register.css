@@ -1,0 +1,121 @@
+* {
+    margin : 0;
+    padding : 0;
+    box-sizing: border-box;
+}
+
+#wrap {
+    width : 100%;
+    margin : 0 auto;
+}
+/* Header */
+
+.header {
+    background-color: #74B243;
+    display: flex;
+    justify-content: center;
+    
+}
+
+#logo {
+    width : 100px;
+    height : 100px;
+    margin-right : 10px;
+}
+
+/* Navigate */
+
+.navigate {
+
+}
+
+.navigate ul, li {
+    list-style: none;
+}
+
+.navigate ul {
+    display: flex;
+    justify-content: center;
+    margin-left : 10px;
+    margin-top : 10px;
+}
+
+.navigate li {
+    padding : 10px;
+    margin : 10px;
+    color : white;
+    box-sizing: border-box;
+    width : 200px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.navigate li:first-child {
+    margin-left : 20px;
+}
+
+.navigate a:visited, a:link {
+    text-decoration: none;
+    color : white;
+}
+
+.navigate li:hover {
+  background: rgba(255, 255, 255, .12);
+}
+/* content */
+.content {
+    background-color: #F1F1F2;
+    padding : 10px;
+}
+
+/* Container */
+.container {
+  width : 1200px;
+  margin : 0 auto;
+  justify-content: center;
+  background-color: white; 
+  display: flex;
+}
+
+.headline {
+    text-align: center;
+    margin : 10px;
+    padding-top : 10px;
+}
+
+.signup-form {
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    width: 400px;
+    margin-top : 20px;
+    margin-bottom : 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.signup-form input[type="text"],
+.signup-form input[type="email"],
+.signup-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top : 10px;
+}
+.signup-form button:hover {
+    background-color: #0000ff;
+}
