@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", loadRecipes);
 async function loadRecipes() {
     try {
         const response = await fetch("recipeList.jsp");
-        const recipes = await response.json(); // 반드시 await 필요
+        const recipes = await response.json();
         renderRecipes(recipes);
     } catch (err) {
         console.error(err);
@@ -13,7 +13,7 @@ async function loadRecipes() {
 function renderRecipes(recipes) {
 	// Make box
 	const container = document.getElementById("boxs");
-	container.innerHTML = "";
+	container.innerHTML = '';
 	
 	recipes.forEach((item) => {
 		const data = item.data;
@@ -82,20 +82,8 @@ function renderRecipes(recipes) {
 		btnContainer.style.gap = '10px';
 		// btnContainer.style.marginTop = '10px';
 
-		// update, delete button
-		// 추가 필요
-		/*
-		btnDelete.style.padding = '6px 12px';
-		btnDelete.style.backgroundColor = 'white';
-		btnDelete.style.border = '1px solid black';
-		btnDelete.style.borderRadius = '4px';
-		btnDelete.style.cursor = 'pointer';
-		*/
-		// Add Button OnClick Event
 		// btnUpdate => recipeUpdate 로 이동
 		//  -- 레시피 작성자와 로그인된 작성자가 같을때만 버튼 보이기
-		// btnDelete => Start Delete Query 
-
 		
 		const btnUpdate = document.createElement('button');
 		btnUpdate.textContent = '수정';
@@ -104,25 +92,55 @@ function renderRecipes(recipes) {
 		btnUpdate.style.border = '1px solid black';
 		btnUpdate.style.borderRadius = '4px';
 		btnUpdate.style.cursor = 'pointer';
-
-
-		const btnDelete = document.createElement('button');
-		btnDelete.textContent = '삭제';
-		btnDelete.addEventListener("click", async () => {
-			if(!confirm("삭제하시겠습니까?")) return;
+		btnUpdate.addEventListener("click", async () => {
+			if(!confirm("수정하시겠습니까?")) return;
 			
-			const res = await fetch("recipeDelete.jsp", {
+			const res = await fetch("recipeUpdate.jsp", {
 				method : "POST",
 				headers : {"Content-Type" : "application/json"},
 				body : JSON.stringify({id})
 			});
 			
 			const msg = await res.text();
-			if(msg == "DELETE_OK") loadRecipes();
+			console.log(msg);
+			if(msg == "UPDATE_OK") {
+				loadRecipes();
+			}
+		});
+
+
+		const btnDelete = document.createElement('button');
+		btnDelete.textContent = '삭제';
+		btnDelete.style.padding = '6px 12px';
+		btnDelete.style.backgroundColor = 'white';
+		btnDelete.style.border = '1px solid black';
+		btnDelete.style.borderRadius = '4px';
+		btnDelete.style.cursor = 'pointer';
+		btnDelete.addEventListener("click", async () => {
+		    if(!confirm("삭제하시겠습니까?")) return;
+
+		    try {
+		        const res = await fetch("recipeDelete.jsp", {
+		            method: "POST",
+		            headers: {"Content-Type": "application/json"},
+		            body: JSON.stringify({id})
+		        });
+
+		        const msg = (await res.text()).trim();
+		        if(msg === "DELETE_OK") {
+		            alert("삭제 완료!");
+		            loadRecipes(); // 새로고침
+		        } else {
+		            alert("삭제 실패: " + msg);
+		        }
+		    } catch(err) {
+		        console.error(err);
+		        alert("삭제 중 오류 발생");
+		    }
 		});
 		
 		// append 2 Div
-		btnContainer.appendChild(btnDelete);
+		btnContainer.append(btnDelete, btnUpdate);
 		textInfo.append(categoryDiv, nameDiv, btnContainer);
 		imageRow.append(img, textInfo);
 		content1.appendChild(imageRow);
