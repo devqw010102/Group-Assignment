@@ -19,17 +19,15 @@
         2-3) 테스트 회원 등록 후 테스트 해보기
     
     3. 레시피 정보 수정, 삭제
-        3-1) 레시피 페이지 Tab Menu에 수정, 삭제 버튼 추가
+        3-1) 레시피 페이지 Tab Menu에 수정 버튼 추가
         3-2) Recipe_update.html 작성할 것인지 addRecipe로 연계할지 토의 필요
     
     4. 레시피 입력 재료처럼 수정
         4-1) addRecipe.html 레시피 입력 칸 수정 필요
-    
-    5. recipe_object.js 레시피 객체 추가
 
-    6. 관리자 전용 페이지 추가
+    5. 관리자 전용 페이지 추가
 
-    7. 레시피 업데이트, 삭제 이벤트 추가
+    6. 레시피 업데이트, 삭제 이벤트 추가
 </pre>
 
 ---
@@ -40,6 +38,7 @@
     2. Index 페이지 이미지 크기 조절 完
     3. 재료 배열, 페이지에 추가 完
     4. Tab1 이름 추가 完
+    5. 삭제 버튼 추가 完
 </pre>
 
 ---
@@ -87,19 +86,19 @@
 #### 로그인 페이지
 <pre>
   담당 : 강전홍
-  파일 : login.html, login.js, login.css
+  파일 : login
 </pre>
 
 #### 회원가입 페이지
 <pre>
   담당 : 박영기
-  파일 : register.html, register.css
+  파일 : register
 </pre>
 
 #### 레시피 페이지
 <pre>
   담당 : 김병국
-  파일 : index.html, index.css, index.js, recipe_object.js
+  파일 : index, recipe_object.js, recipeList
   레시피 내용 : 이미지, 이름, 재료, 조리방법
 
   index.js 주석 추가 完
@@ -108,8 +107,8 @@
 #### 레시피 추가 페이지
 <pre>
   담당 : 박주승
-  파일 : addRecipt.html, addRecipt.css, addRecipt.js
-  레시피 내용 : 레시피 페이지와 동일, 조리 방법 입력, 카테고리 추가
+  파일 : addRecipt
+  레시피 내용 : 레시피 페이지와 동일
 </pre>
 
 #### 회원 수정 페이지
@@ -120,6 +119,5 @@
 </pre>
 
 ### ERD
-<img width="831" height="447" alt="ERD-diagram" src="https://github.com/user-attachments/assets/fa4a21d2-be99-4d41-876a-3316c13ae17d" />
 <img width="527" height="712" alt="image" src="https://github.com/user-attachments/assets/f5993a6f-0575-4358-ab06-07904407c887" />
 
