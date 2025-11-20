@@ -121,4 +121,5 @@
 
 ### ERD
 <img width="831" height="447" alt="ERD-diagram" src="https://github.com/user-attachments/assets/fa4a21d2-be99-4d41-876a-3316c13ae17d" />
+<img width="527" height="712" alt="image" src="https://github.com/user-attachments/assets/f5993a6f-0575-4358-ab06-07904407c887" />
 
