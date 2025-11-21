@@ -123,5 +123,6 @@
 </pre>
 
 ### ERD
-<img width="527" height="712" alt="image" src="https://github.com/user-attachments/assets/f5993a6f-0575-4358-ab06-07904407c887" />
+<img width="294" height="728" alt="image" src="https://github.com/user-attachments/assets/66420ade-49a7-4baf-938b-c38a5e4a6e9e" />
+
 
