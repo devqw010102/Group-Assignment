@@ -1,6 +1,7 @@
 ## Today 
 <pre>
 1. 수정 삭제 버튼 sessionId와 비교해서 hidden, visible 상태 변경
+2. menu.jsp에서 admin 로그인시 관리자 페이지 보여주기
 </pre>
 
 ### TODO
