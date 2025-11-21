@@ -31,11 +31,12 @@ SELECT * FROM USER_CONSTRAINTS
 SELECT * FROM RECIPE;
 SELECT * FROM MEMBER;
 
+
 DESC RECIPE
 DESC member;
 
-DROP TABLE recipe;
-DROP TABLE MEMBER;
+--DROP TABLE recipe;
+--DROP TABLE MEMBER;
 
 INSERT INTO member VALUES('admin', 'admin1234', '관리자', null, null, null, null, null, null);
 INSERT INTO member(id, password, name, gender, birth, mail, phone, address) VALUES('TEST', 'TEST1234', '테스트', '남', '2001-01-02', 'test@gmail.com', '010-1234-5678', '울산');

@@ -19,6 +19,10 @@
         			<li>[<%= sessionId %>님]</li>
         			<li><a href = '<c:url value = "logout.jsp"/>'>로그아웃</a></li>
 		            <li><a href = '<c:url value = "memberUpdate.jsp"/>'>회원 수정</a></li>
+		            <li><a href = '<c:url value = "addRecipe.jsp"/>'>레시피 추가</a></li>
+		          	<c:if test = "${sessionId eq 'admin' }" >
+		          		<li><a href='<c:url value="adminPage.jsp"/>'>관리자 페이지</a></li>
+		          	</c:if>
         		</c:otherwise>
         	</c:choose>
         </ul>

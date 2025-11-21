@@ -1,3 +1,5 @@
+// json : image, name, categoryt, ingredient
+
 let ingredients = [];
 let steps = [];
 
@@ -15,14 +17,11 @@ function onAddIngredient() {
     const amount = document.getElementById("ingAmount").value.trim();
     const unit   = document.getElementById("ingUnit").value;
 
-    if (name === "") {
-        alert("재료명을 입력하세요.");
-        return;
-    }
+  if(!name || !amount) return alert("재료명과 수량을 입력해주세요.");
 
-    ingredients.push({ name, amount, unit });
-
-    
+  	const ingStr = `${name} : ${amount}${unit}`;
+	ingredients.push(ingStr);
+	
     document.getElementById("ingName").value = "";
     document.getElementById("ingAmount").value = "";
     document.getElementById("ingUnit").value = "g";
@@ -39,12 +38,10 @@ function renderIngredientList() {
         row.className = "ingRow";
 
         
-        row.innerHTML = `
-            <span>${ing.name}</span>
-            <span>${ing.amount}</span>
-            <span>${ing.unit}</span>
-            <button type="button" class="ingDel" data-idx="${i}">삭제</button>
-        `;
+		row.innerHTML = `
+		    <span>${ing}</span>
+		    <button type="button" class="ingDel" data-idx="${i}">삭제</button>
+		`;
 
         list.appendChild(row);
     });
@@ -123,26 +120,16 @@ function onSubmit() {
     if (imageInput.files.length > 0) {
         imageName = imageInput.files[0].name;
     }
-
-    
-    const today = new Date();
-    const yyyy  = today.getFullYear();
-    const mm    = String(today.getMonth() + 1).padStart(2, "0");
-    const dd    = String(today.getDate()).padStart(2, "0");
-    const dateNow = `${yyyy}-${mm}-${dd}`;
-
     
 	const recipeObj = {
-	    title: title,
+	    name: title,
 	    category: category,
-	    ingredients: ingredients,
-	    steps: steps,
-	    image_name: imageName,
-	    dateNow: dateNow
+	    ingredient: ingredients,
+	    cook: steps,
+	    image: imageName
 	};
     
     document.getElementById("recipeJson").value = JSON.stringify(recipeObj);
-    document.getElementById("dateNow").value    = dateNow;
 
     console.log("보낼 JSON:", JSON.stringify(recipeObj));
 

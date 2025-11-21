@@ -24,6 +24,7 @@
 				return false;
 			}
     	}
+    	
     </script>
 </head>
 <body>
@@ -141,7 +142,7 @@
 				
 				        <!-- 버튼 -->
 				        <div class="btnRow">
-				          <button type="reset" class="btn ghost" onclick="onReset()">취소</button>
+				          <button type="reset" class="btn ghost" onclick="onReset()">리셋</button>
 				          <button type="submit" class="btn primary">등록</button>
 				        </div>
 				      </form>

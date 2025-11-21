@@ -1,4 +1,15 @@
-document.addEventListener("DOMContentLoaded", loadRecipes);
+let sessionId = null;
+
+document.addEventListener("DOMContentLoaded", async () => {
+    await getSession();  // 세션 먼저 가져오기
+    loadRecipes();       // 그 다음 레시피 로딩
+});
+async function getSession() {
+	const res = await fetch("sessionInfo.jsp");
+	const data = await res.json();
+	sessionId = data.sessionId;
+}
+
 
 async function loadRecipes() {
     try {
@@ -11,6 +22,10 @@ async function loadRecipes() {
 }
 
 function renderRecipes(recipes) {
+	
+	// Get Session Id
+	
+	console.log(recipes);
 	// Make box
 	const container = document.getElementById("boxs");
 	container.innerHTML = '';
@@ -18,6 +33,8 @@ function renderRecipes(recipes) {
 	recipes.forEach((item) => {
 		const data = item.data;
 		const id = item.id;
+		
+		console.log(id);
 		
 		const box = document.createElement('div');
 		box.className = 'box';
@@ -51,8 +68,8 @@ function renderRecipes(recipes) {
 		imageRow.style.gap = '20px';
 
 		// Image
-		const img = document.createElement('img');
-		img.src = data.image;
+		const img = document.createElement('img');	
+		img.src = data.image;	
 		// img.alt = `요리 이미지 ${i + 1}`;
 		img.style.width = '250px';
 		img.style.height = '230px';
@@ -84,64 +101,58 @@ function renderRecipes(recipes) {
 
 		// btnUpdate => recipeUpdate 로 이동
 		//  -- 레시피 작성자와 로그인된 작성자가 같을때만 버튼 보이기
+		const writer = item.member_id;
+		console.log(writer);
+		if(sessionId == writer) {
+			const btnUpdate = document.createElement('button');
+				btnUpdate.textContent = '수정';
+				btnUpdate.style.padding = '6px 12px';
+				btnUpdate.style.backgroundColor = 'white';
+				btnUpdate.style.border = '1px solid black';
+				btnUpdate.style.borderRadius = '4px';
+				btnUpdate.style.cursor = 'pointer';
+				btnUpdate.addEventListener("click", () => {
+				    if (!confirm("수정하시겠습니까?")) return;
+				    location.href = `recipeUpdate.jsp?id=${id}`;  // GET 방식으로 이동!
+				});
+
+
+				const btnDelete = document.createElement('button');
+				btnDelete.textContent = '삭제';
+				btnDelete.style.padding = '6px 12px';
+				btnDelete.style.backgroundColor = 'white';
+				btnDelete.style.border = '1px solid black';
+				btnDelete.style.borderRadius = '4px';
+				btnDelete.style.cursor = 'pointer';
+				btnDelete.addEventListener("click", async () => {
+				    if(!confirm("삭제하시겠습니까?")) return;
+
+				    try {
+				        const res = await fetch("recipeDelete.jsp", {
+				            method: "POST",
+				            headers: {"Content-Type": "application/json"},
+				            body: JSON.stringify({id})
+				        });
+
+				        const msg = (await res.text()).trim();
+						console.log(msg);
+				        if(msg === "DELETE_OK") {
+				            alert("삭제 완료!");
+				            loadRecipes(); // 새로고침
+				        } else {
+				            alert("삭제 실패: " + msg);
+				        }
+				    } catch(err) {
+				        console.error(err);
+				        alert("삭제 중 오류 발생");
+				    }
+				});
+			btnContainer.append(btnDelete, btnUpdate);
+		}
 		
-		const btnUpdate = document.createElement('button');
-		btnUpdate.textContent = '수정';
-		btnUpdate.style.padding = '6px 12px';
-		btnUpdate.style.backgroundColor = 'white';
-		btnUpdate.style.border = '1px solid black';
-		btnUpdate.style.borderRadius = '4px';
-		btnUpdate.style.cursor = 'pointer';
-		btnUpdate.addEventListener("click", async () => {
-			if(!confirm("수정하시겠습니까?")) return;
-			
-			const res = await fetch("recipeUpdate.jsp", {
-				method : "POST",
-				headers : {"Content-Type" : "application/json"},
-				body : JSON.stringify({id})
-			});
-			
-			const msg = await res.text();
-			console.log(msg);
-			if(msg == "UPDATE_OK") {
-				loadRecipes();
-			}
-		});
-
-
-		const btnDelete = document.createElement('button');
-		btnDelete.textContent = '삭제';
-		btnDelete.style.padding = '6px 12px';
-		btnDelete.style.backgroundColor = 'white';
-		btnDelete.style.border = '1px solid black';
-		btnDelete.style.borderRadius = '4px';
-		btnDelete.style.cursor = 'pointer';
-		btnDelete.addEventListener("click", async () => {
-		    if(!confirm("삭제하시겠습니까?")) return;
-
-		    try {
-		        const res = await fetch("recipeDelete.jsp", {
-		            method: "POST",
-		            headers: {"Content-Type": "application/json"},
-		            body: JSON.stringify({id})
-		        });
-
-		        const msg = (await res.text()).trim();
-				console.log(msg);
-		        if(msg === "DELETE_OK") {
-		            alert("삭제 완료!");
-		            loadRecipes(); // 새로고침
-		        } else {
-		            alert("삭제 실패: " + msg);
-		        }
-		    } catch(err) {
-		        console.error(err);
-		        alert("삭제 중 오류 발생");
-		    }
-		});
 		
 		// append 2 Div
-		btnContainer.append(btnDelete, btnUpdate);
+
 		textInfo.append(categoryDiv, nameDiv, btnContainer);
 		imageRow.append(img, textInfo);
 		content1.appendChild(imageRow);

@@ -14,13 +14,14 @@
     try {
         Class.forName("oracle.jdbc.driver.OracleDriver");
         conn = DriverManager.getConnection(url, user, password);
-        String sql = "SELECT id, json FROM recipe";
+        String sql = "SELECT id, json, member_id FROM recipe";
         ps = conn.prepareStatement(sql);
         rs = ps.executeQuery();
 
         while(rs.next()){
             Map<String, Object> map = new HashMap<>();
             map.put("id", rs.getInt("id"));
+            map.put("member_id", rs.getString("member_id"));
             map.put("data", rs.getString("json")); // json 컬럼 자체는 String
             list.add(map);
         }
@@ -37,7 +38,10 @@
     sb.append("[");
     for(int i=0; i<list.size(); i++){
         Map<String,Object> m = list.get(i);
-        sb.append("{\"id\":").append(m.get("id")).append(",\"data\":").append(m.get("data")).append("}");
+        sb.append("{\"id\":").append(m.get("id"))
+        .append(",\"member_id\":\"").append(m.get("member_id")).append("\"")
+        .append(",\"data\":").append(m.get("data"))
+        .append("}");
         if(i < list.size()-1) sb.append(",");
     }
     sb.append("]");

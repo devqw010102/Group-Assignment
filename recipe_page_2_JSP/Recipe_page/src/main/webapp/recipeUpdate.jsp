@@ -1,15 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page import = "java.sql.*" %>
 <%@ page import = "org.json.*" %>
-<%
-	request.setCharacterEncoding("UTF-8");
-	response.setContentType("text/plain; charset=UTF-8");
-	
-	Connection conn = null;
-	PreparedStatement pstmt = null;
-	
-	
-%>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -18,14 +9,19 @@
     <link rel ="stylesheet" href ="resources/css/index.css">
 </head>
 <body>
+	<%
+		String recipe_id = request.getParameter("id");		
+	%>
 	<div id = "wrap">
 		<%@ include file = "menu.jsp" %>
 		
 		<div class = "content">
-			
+			<%= recipe_id %> 출력
 		</div>
 	</div>
 	
+	<!-- 
 	<script type = "module" src = "resources/js/recipeUpdate"></script>
+	 -->
 </body>
 </html>
