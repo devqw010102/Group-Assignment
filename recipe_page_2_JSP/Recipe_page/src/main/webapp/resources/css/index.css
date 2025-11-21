@@ -8,7 +8,6 @@
     width : 100%;
     margin : 0 auto;
 }
-
 /* Header */
 
 .header {
@@ -31,8 +30,7 @@
 }
 
 .navigate ul, li {
-    list-style : none;
-    /* decimal */
+    list-style: none;
 }
 
 .navigate ul {

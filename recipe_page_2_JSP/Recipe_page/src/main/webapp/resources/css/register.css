@@ -65,57 +65,145 @@
 .navigate li:hover {
   background: rgba(255, 255, 255, .12);
 }
-/* content */
+
+/* 컨텐츠 영역 */
 .content {
     background-color: #F1F1F2;
     padding : 10px;
 }
-
-/* Container */
+/* 회원가입 박스 */
 .container {
-  width : 1200px;
-  margin : 0 auto;
-  justify-content: center;
-  background-color: white; 
-  display: flex;
+    width : 1200px;
+    margin : 0 auto;
+	justify-content: center;
+	background-color: white;
+}
+
+.form-card {
+    display: flex;
+    justify-content: center;
+    align-items :center;
+}
+
+.signup-form {
+    width: 100%;
+    max-width: 750px;              /* 폼 크기 조정 */
+    padding: 30px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin : 0 auto;
 }
 
 .headline {
     text-align: center;
-    margin : 10px;
-    padding-top : 10px;
+    font-size: 26px;
+    margin-bottom: 25px;
 }
 
-.signup-form {
-    padding: 30px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    width: 400px;
-    margin-top : 20px;
-    margin-bottom : 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+/* 입력 행 */
+.row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding : 5px;
 }
-.signup-form input[type="text"],
-.signup-form input[type="email"],
-.signup-form input[type="password"] {
-    width: 100%;
+
+.textLabel {
+    width: 120px;
+    font-weight: 600;
+    color: #555;
+}
+
+/* input 기본 스타일 */
+input[type="text"],
+input[type="password"],
+select {
+    flex: 1;
     padding: 10px;
-    margin: 8px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    transition: 0.2s;
+    font-size: 14px;
+    outline: none;
 }
+
+input:focus,
+select:focus {
+    border-color: #4285f4;
+    box-shadow: 0 0 5px rgba(66, 133, 244, 0.3);
+}
+
+/* 성별 */
+.divGender input {
+    margin-right: 4px;
+}
+
+/* 생일 */
+.divBirth {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+.divBirth input,
+.divBirth select {
+    width: 30%;
+}
+
+/* 주소 */
+.divAddress {
+	width : 450px;
+}
+
+#address {
+	width : 100%;
+}
+
+/* 버튼 */
+
+.btnRow {
+	display: flex;
+	justify-content: space-around;
+}
+
 .btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-top : 10px;
+	margin-top : 15px;
+	padding: 10px 20px;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	width: 40%;
+	font-weight: bold;
 }
-.signup-form button:hover {
-    background-color: #0000ff;
+.ghost {
+	background-color : gray;
+}
+.primary {
+	background-color : #4CAF50;
+}
+
+input[type="submit"],
+input[type="reset"] {
+    padding: 10px 20px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+input[type="submit"] {
+    background: #4CAF50;
+    color: white;
+}
+input[type="submit"]:hover {
+    background: #45a049;
+}
+
+input[type="reset"] {
+    background: #ccc;
+}
+input[type="reset"]:hover {
+    background: #b3b3b3;
 }

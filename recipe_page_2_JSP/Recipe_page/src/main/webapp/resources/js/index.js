@@ -127,6 +127,7 @@ function renderRecipes(recipes) {
 		        });
 
 		        const msg = (await res.text()).trim();
+				console.log(msg);
 		        if(msg === "DELETE_OK") {
 		            alert("삭제 완료!");
 		            loadRecipes(); // 새로고침
