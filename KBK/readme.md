@@ -1,13 +1,18 @@
 ## Today 
 <pre>
-1. 수정 삭제 버튼 sessionId와 비교해서 hidden, visible 상태 변경
-2. menu.jsp에서 admin 로그인시 관리자 페이지 보여주기
+  레시피 추가 테스트해야함
 </pre>
-
+## 25-11-21
+<pre>  
+  1. menu.jsp 로그인 sessionID, admin, null 구분하여 출력
+  2. 레시피 수정, 삭제 버튼 작성자에 맞춰 visiable 여부 완료
+  3. 로그인, 로그아웃 구현 완료
+</pre>
 ### TODO
 <pre>
   1. 관리자 전용 페이지 회원목록, 레시피 수정,삭제 권한, 정렬?
   2. 레시피 수정(addRecipe 디자인 참고) 폼 만드어야함
+  3. 레시피 추가 쿼리(json) 양식 맞춰야함
 </pre>
 
 <h3>파일 설명</h3>
