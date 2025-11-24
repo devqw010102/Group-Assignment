@@ -1,192 +1,381 @@
-let ingredients = [];
-let steps = [];
-
-window.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("btnAddIng").addEventListener("click", onAddIngredient);
-    document.getElementById("btnAddStep").addEventListener("click", onAddStep);
-    document.getElementById("btnSubmit").addEventListener("click", onSubmit);
-    document.getElementById("btnCancel").addEventListener("click", () => history.back());
-});
-
-/* ======================= 재료 추가 ======================= */
-
-function onAddIngredient() {
-    const name   = document.getElementById("ingName").value.trim();
-    const amount = document.getElementById("ingAmount").value.trim();
-    const unit   = document.getElementById("ingUnit").value;
-
-    if (name === "") {
-        alert("재료명을 입력하세요.");
-        return;
-    }
-
-    ingredients.push({ name, amount, unit });
-
-    document.getElementById("ingName").value = "";
-    document.getElementById("ingAmount").value = "";
-    document.getElementById("ingUnit").value = "g";
-
-    renderIngredientList();
+/* ============ 초기화 ============ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-function renderIngredientList() {
-    const list = document.getElementById("ingList");
-    list.innerHTML = "";
-
-    ingredients.forEach((ing, i) => {
-        const row = document.createElement("div");
-        row.className = "ingRow";
-
-        row.innerHTML = `
-            <span>${ing.name}</span>
-            <span>${ing.amount}</span>
-            <span>${ing.unit}</span>
-            <button type="button" class="ingDel" data-idx="${i}">삭제</button>
-        `;
-
-        list.appendChild(row);
-    });
-
-    list.querySelectorAll(".ingDel").forEach(btn => {
-        btn.addEventListener("click", () => {
-            const index = Number(btn.dataset.idx);
-            ingredients.splice(index, 1);
-            renderIngredientList();
-        });
-    });
+body {
+  background: #fff;
+  color: #222;
 }
 
-/* ======================= 조리 순서 ======================= */
-
-function onAddStep() {
-    const txt = document.getElementById("stepText").value.trim();
-    if (txt === "") {
-        alert("조리 순서를 입력하세요.");
-        return;
-    }
-
-    steps.push(txt);
-    document.getElementById("stepText").value = "";
-    renderStepList();
+#wrap {
+  width: 100%;
+  margin: 0 auto;
 }
 
-function renderStepList() {
-    const list = document.getElementById("stepList");
-    list.innerHTML = "";
-
-    steps.forEach((step, i) => {
-        const row = document.createElement("div");
-        row.className = "stepRow";
-
-        row.innerHTML = `
-            <span class="stepIndex">${i + 1}.</span>
-
-            <input type="text" 
-                   class="stepEditInput"
-                   value="${step}"
-                   data-idx="${i}"/>
-
-            <div class="stepBtnGroup">
-                <button type="button" class="stepBtn stepBtn-move stepUp" data-idx="${i}">▲</button>
-                <button type="button" class="stepBtn stepBtn-move stepDown" data-idx="${i}">▼</button>
-                <button type="button" class="stepBtn stepBtn-delete stepDel" data-idx="${i}">삭제</button>
-            </div>
-        `;
-
-        list.appendChild(row);
-    });
-
-    /* ---- 삭제 ---- */
-    list.querySelectorAll(".stepDel").forEach(btn => {
-        btn.addEventListener("click", () => {
-            const index = Number(btn.dataset.idx);
-            steps.splice(index, 1);
-            renderStepList();
-        });
-    });
-
-    /* ---- 즉시 내용 수정 ---- */
-    list.querySelectorAll(".stepEditInput").forEach(input => {
-        input.addEventListener("input", () => {
-            const index = Number(input.dataset.idx);
-            steps[index] = input.value;   // 수정 즉시 배열 반영
-        });
-    });
-
-    /* ---- 위로 ---- */
-    list.querySelectorAll(".stepUp").forEach(btn => {
-        btn.addEventListener("click", () => {
-            const index = Number(btn.dataset.idx);
-            if (index === 0) return;
-
-            const tmp = steps[index - 1];
-            steps[index - 1] = steps[index];
-            steps[index] = tmp;
-
-            renderStepList();
-        });
-    });
-
-    /* ---- 아래로 ---- */
-    list.querySelectorAll(".stepDown").forEach(btn => {
-        btn.addEventListener("click", () => {
-            const index = Number(btn.dataset.idx);
-            if (index === steps.length - 1) return;
-
-            const tmp = steps[index + 1];
-            steps[index + 1] = steps[index];
-            steps[index] = tmp;
-
-            renderStepList();
-        });
-    });
+/* ============ 헤더 ============ */
+.header {
+  background: #74B243;
+  display: flex;
+  justify-content: center; 
 }
 
+#logo {
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+}
 
-/* ======================= 제출 ======================= */
+.navigate ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 10px 0 0 10px;
+  padding: 0;
+}
 
-function onSubmit() {
-    const title      = document.getElementById("recipeTitle").value.trim();
-    const category   = document.getElementById("recipeCategory").value;
-    const imageInput = document.getElementById("recipeImage");
+.navigate li {
+  padding: 10px;
+  margin: 10px;
+  color: #fff;
+  width: 200px;
+  cursor: pointer;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 8px;
+}
 
-    if (title === "") {
-        alert("레시피 이름을 입력하세요.");
-        return;
-    }
-    if (ingredients.length === 0) {
-        alert("재료를 1개 이상 추가하세요.");
-        return;
-    }
-    if (steps.length === 0) {
-        alert("조리 순서를 1개 이상 추가하세요.");
-        return;
-    }
+.navigate li:hover {
+  background: rgba(255, 255, 255, .12);
+}
 
-    let imageName = "";
-    if (imageInput.files.length > 0) {
-        imageName = imageInput.files[0].name;
-    }
+.navigate a:visited,
+.navigate a:link {
+  text-decoration: none;
+  color: white;
+}
 
-    const today = new Date();
-    const yyyy  = today.getFullYear();
-    const mm    = String(today.getMonth() + 1).padStart(2, "0");
-    const dd    = String(today.getDate()).padStart(2, "0");
-    const dateNow = `${yyyy}-${mm}-${dd}`;
+/* ============ Content 기본 ============ */
+.content {
+  background-color: #F1F1F2;
+  padding: 10px;
+}
 
-    const recipeObj = {
-        title,
-        category,
-        ingredients,
-        steps,             // ← 수정/이동된 최신 순서 그대로 DB로 감
-        image_name: imageName,
-        dateNow
-    };
+.container {
+  width: 1200px;
+  margin: 0 auto;
+  background-color: white;    
+  padding: 30px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr;
+}
 
-    document.getElementById("recipeJson").value = JSON.stringify(recipeObj);
-    document.getElementById("dateNow").value    = dateNow;
+/* ============ 레시피 입력 폼 ============ */
+#recipeForm {
+  width: clamp(640px, 70vw, 900px);
+  margin: 30px auto 0;
+  border: 2px solid #ddd;
+  background: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 6px rgba(0,0,0,.06);
+}
 
-    console.log("보낼 JSON:", JSON.stringify(recipeObj));
+/* ============ 인풋 공통 ============ */
+.recipeInput {
+  display: block;
+  margin: 0 0 20px;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #fff;
+  width: 100%;
+  box-sizing: border-box;
+}
 
-    document.getElementById("recipeForm").submit();
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+#writer {
+  width: 150px !important;   
+  display: inline-block;
+}
+
+/* 개별 width 조정 */
+#recipeTitle,
+#recipeCategory {
+  width: 300px;
+}
+
+#recipeDesc {
+  height: 130px;
+  resize: vertical;
+}
+
+.helpText {
+  display: block;
+  margin: -6px 0 14px;
+  color: #666;
+  font-size: 12px;
+}
+
+/* ============ 재료 입력칸 ============ */
+.ingredientBox {
+  margin-bottom: 20px;
+}
+
+.ingredientInputs {
+  display: grid;
+  grid-template-columns: 1fr 120px 120px auto;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.ingredientInputs input,
+.ingredientInputs select {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #fff;
+}
+
+#btnAddIng {
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #f7f7f7;
+  cursor: pointer;
+}
+
+#btnAddIng:hover {
+  background: #eee;
+}
+
+.ingredientList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ingRow {
+  display: grid;
+  grid-template-columns: 1fr 120px 120px 70px; 
+  gap: 10px;
+  align-items: center;
+}
+
+.ingRow span {
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.ingDel {
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.ingDel:hover {
+  background: #fee;
+  border-color: #e99;
+}
+
+/* ============ 조리 순서 입력칸 ============ */
+
+.stepBox {
+  margin-bottom: 20px;
+}
+
+.stepInputs {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+#stepText.recipeInput {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+/* + 순서추가 버튼 */
+#btnAddStep {
+  padding: 10px 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #f7f7f7;
+  cursor: pointer;
+  font-size: 14px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+#btnAddStep:hover {
+  background: #eee;
+}
+
+/* 리스트 전체 영역 */
+.stepList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* 조리 순서 한 줄 */
+.stepRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+}
+
+/* 앞 번호 */
+.stepIndex {
+  width: 28px;
+  font-weight: 700;
+  font-size: 15px;
+  text-align: right;
+}
+
+/* 인라인 수정 input */
+.stepEditInput {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 14px;
+}
+
+/* 버튼 묶음 */
+.stepBtnGroup {
+  display: flex;
+  gap: 6px;
+}
+
+/* 공통 버튼 */
+.stepBtn {
+  border: 1px solid #ddd;
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.05s ease, border-color 0.15s;
+}
+
+/* 위/아래 버튼 */
+.stepBtn-move {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 삭제 버튼 */
+.stepBtn-delete {
+  border-color: #ff9b9b;
+  color: #e74c3c;
+}
+
+.stepBtn-delete:hover {
+  background-color: #ffecec;
+  border-color: #ff6b6b;
+}
+
+.stepBtn:hover {
+  background-color: #f3f3f3;
+}
+
+.stepBtn:active {
+  transform: scale(0.94);
+}
+
+/* ============ 폼 버튼 ============ */
+#formButtons {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+#formButtons button {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #f7f7f7;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#formButtons button:hover {
+  background: #eee;
+}
+
+/* ============ 반응형 ============ */
+@media (max-width: 768px) {
+  .ingredientInputs {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ingRow {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  #recipeForm {
+    width: 100%;
+    margin: 20px auto;
+    border-left: none;
+    border-right: none;
+    padding: 16px;
+    box-shadow: none;
+  }
+
+  #recipeTitle,
+  #recipeCategory {
+    width: 100%;
+  }
+
+  .ingredientInputs {
+    grid-template-columns: 1fr;
+  }
+
+  .ingRow {
+    grid-template-columns: 1fr;
+  }
+
+  #formButtons {
+    flex-direction: column;
+  }
+
+  #formButtons button {
+    width: 100%;
+  }
 }
