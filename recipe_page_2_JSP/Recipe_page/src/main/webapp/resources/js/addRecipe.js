@@ -1,8 +1,5 @@
-// json : image, name, categoryt, ingredient
-
 let ingredients = [];
 let steps = [];
-
 
 window.addEventListener("DOMContentLoaded", () => {
     document.getElementById("btnAddIng").addEventListener("click", onAddIngredient);
@@ -11,17 +8,20 @@ window.addEventListener("DOMContentLoaded", () => {
     document.getElementById("btnCancel").addEventListener("click", () => history.back());
 });
 
+/* ======================= 재료 추가 ======================= */
 
 function onAddIngredient() {
     const name   = document.getElementById("ingName").value.trim();
     const amount = document.getElementById("ingAmount").value.trim();
     const unit   = document.getElementById("ingUnit").value;
 
-  if(!name || !amount) return alert("재료명과 수량을 입력해주세요.");
+    if (name === "") {
+        alert("재료명을 입력하세요.");
+        return;
+    }
 
-  	const ingStr = `${name} : ${amount}${unit}`;
-	ingredients.push(ingStr);
-	
+    ingredients.push({ name, amount, unit });
+
     document.getElementById("ingName").value = "";
     document.getElementById("ingAmount").value = "";
     document.getElementById("ingUnit").value = "g";
@@ -37,17 +37,17 @@ function renderIngredientList() {
         const row = document.createElement("div");
         row.className = "ingRow";
 
-        
-		row.innerHTML = `
-		    <span>${ing}</span>
-		    <button type="button" class="ingDel" data-idx="${i}">삭제</button>
-		`;
+        row.innerHTML = `
+            <span>${ing.name}</span>
+            <span>${ing.amount}</span>
+            <span>${ing.unit}</span>
+            <button type="button" class="ingDel" data-idx="${i}">삭제</button>
+        `;
 
         list.appendChild(row);
     });
 
-    
-    document.querySelectorAll(".ingDel").forEach(btn => {
+    list.querySelectorAll(".ingDel").forEach(btn => {
         btn.addEventListener("click", () => {
             const index = Number(btn.dataset.idx);
             ingredients.splice(index, 1);
@@ -56,6 +56,7 @@ function renderIngredientList() {
     });
 }
 
+/* ======================= 조리 순서 ======================= */
 
 function onAddStep() {
     const txt = document.getElementById("stepText").value.trim();
@@ -79,33 +80,80 @@ function renderStepList() {
 
         row.innerHTML = `
             <span class="stepIndex">${i + 1}.</span>
-            <span class="stepTextView">${step}</span>
-            <button type="button" class="stepDel" data-idx="${i}">삭제</button>
+
+            <input type="text" 
+                   class="stepEditInput"
+                   value="${step}"
+                   data-idx="${i}"/>
+
+            <div class="stepBtnGroup">
+                <button type="button" class="stepBtn stepBtn-move stepUp" data-idx="${i}">▲</button>
+                <button type="button" class="stepBtn stepBtn-move stepDown" data-idx="${i}">▼</button>
+                <button type="button" class="stepBtn stepBtn-delete stepDel" data-idx="${i}">삭제</button>
+            </div>
         `;
 
         list.appendChild(row);
     });
 
-    document.querySelectorAll(".stepDel").forEach(btn => {
+    /* ---- 삭제 ---- */
+    list.querySelectorAll(".stepDel").forEach(btn => {
         btn.addEventListener("click", () => {
             const index = Number(btn.dataset.idx);
             steps.splice(index, 1);
             renderStepList();
         });
     });
+
+    /* ---- 즉시 내용 수정 ---- */
+    list.querySelectorAll(".stepEditInput").forEach(input => {
+        input.addEventListener("input", () => {
+            const index = Number(input.dataset.idx);
+            steps[index] = input.value;   // 수정 즉시 배열 반영
+        });
+    });
+
+    /* ---- 위로 ---- */
+    list.querySelectorAll(".stepUp").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const index = Number(btn.dataset.idx);
+            if (index === 0) return;
+
+            const tmp = steps[index - 1];
+            steps[index - 1] = steps[index];
+            steps[index] = tmp;
+
+            renderStepList();
+        });
+    });
+
+    /* ---- 아래로 ---- */
+    list.querySelectorAll(".stepDown").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const index = Number(btn.dataset.idx);
+            if (index === steps.length - 1) return;
+
+            const tmp = steps[index + 1];
+            steps[index + 1] = steps[index];
+            steps[index] = tmp;
+
+            renderStepList();
+        });
+    });
 }
 
 
+/* ======================= 제출 ======================= */
+
 function onSubmit() {
     const title      = document.getElementById("recipeTitle").value.trim();
-    const category   = document.getElementById("recipeCategory").value;  
+    const category   = document.getElementById("recipeCategory").value;
     const imageInput = document.getElementById("recipeImage");
 
     if (title === "") {
         alert("레시피 이름을 입력하세요.");
         return;
     }
-
     if (ingredients.length === 0) {
         alert("재료를 1개 이상 추가하세요.");
         return;
@@ -115,24 +163,30 @@ function onSubmit() {
         return;
     }
 
-    
     let imageName = "";
     if (imageInput.files.length > 0) {
         imageName = imageInput.files[0].name;
     }
-    
-	const recipeObj = {
-	    name: title,
-	    category: category,
-	    ingredient: ingredients,
-	    cook: steps,
-	    image: imageName
-	};
-    
+
+    const today = new Date();
+    const yyyy  = today.getFullYear();
+    const mm    = String(today.getMonth() + 1).padStart(2, "0");
+    const dd    = String(today.getDate()).padStart(2, "0");
+    const dateNow = `${yyyy}-${mm}-${dd}`;
+
+    const recipeObj = {
+        title,
+        category,
+        ingredients,
+        steps,             // ← 수정/이동된 최신 순서 그대로 DB로 감
+        image_name: imageName,
+        dateNow
+    };
+
     document.getElementById("recipeJson").value = JSON.stringify(recipeObj);
+    document.getElementById("dateNow").value    = dateNow;
 
     console.log("보낼 JSON:", JSON.stringify(recipeObj));
 
-    
     document.getElementById("recipeForm").submit();
 }
