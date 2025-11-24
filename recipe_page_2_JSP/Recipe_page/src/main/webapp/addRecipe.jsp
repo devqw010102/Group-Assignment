@@ -11,12 +11,15 @@
 	<div id="wrap">
 
 	    <%@ include file="menu.jsp" %>
+
 		<div class="content">
 			<div class="container">
 			
-		 		<form id="recipeForm" method="post" action="addRecipe_process.jsp" enctype ="multipart/form-data">
+		 		<form id="recipeForm" method="post" action="addRecipe_process.jsp">
 
+					
 					<input type="hidden" id="recipeJson" name="recipeJson" />
+					<input type="hidden" id="dateNow" name="dateNow" />
 
 			   		<label for="recipeTitle">레시피 이름</label>
 			   		<input type="text" id="recipeTitle" class="recipeInput" placeholder="예) 담백한 두부스테이크"/>
@@ -30,6 +33,9 @@
 						<option>디저트</option>
 						<option>기타</option>
 					</select>
+
+					
+
 
 					<!-- 재료 -->
 					<label>재료</label>
@@ -50,6 +56,7 @@
 			        	<div id="ingList" class="ingredientList"></div>
 			    	</div>
 
+					
 					<label>조리 순서</label>
 					<div class="stepBox">
 						<div class="stepInputs">
@@ -61,7 +68,7 @@
 					</div>
 			
 					<label for="recipeImage">대표 사진</label>
-					<input type="file" name = "recipeImage" id="recipeImage" class="recipeInput" accept="image/*" />
+					<input type="file" id="recipeImage" class="recipeInput" accept="image/*" />
 					<span class="helpText">(JPG/PNG 권장 · 1장)</span>
 
 					<div id="formButtons">
