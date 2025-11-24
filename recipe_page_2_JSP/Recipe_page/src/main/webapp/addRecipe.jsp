@@ -15,9 +15,13 @@
 		<div class="content">
 			<div class="container">
 			
-		 		<form id="recipeForm" method="post" action="addRecipe_process.jsp">
+		 		<form id="recipeForm"
+					  name="recipeForm"
+					  method="post"
+					  action="addRecipe_process.jsp"
+					  enctype="multipart/form-data">
 
-					
+					<!-- 서버로 보낼 JSON / 날짜 -->
 					<input type="hidden" id="recipeJson" name="recipeJson" />
 					<input type="hidden" id="dateNow" name="dateNow" />
 
@@ -26,16 +30,13 @@
 
 			   		<label for="recipeCategory">카테고리</label>
 				    <select id="recipeCategory" class="recipeInput">
-						<option>한식</option>
-						<option>양식</option>
-						<option>중식</option>
-						<option>일식</option>
-						<option>디저트</option>
-						<option>기타</option>
+						<option value="한식">한식</option>
+						<option value="양식">양식</option>
+						<option value="중식">중식</option>
+						<option value="일식">일식</option>
+						<option value="디저트">디저트</option>
+						<option value="기타">기타</option>
 					</select>
-
-					
-
 
 					<!-- 재료 -->
 					<label>재료</label>
@@ -56,7 +57,7 @@
 			        	<div id="ingList" class="ingredientList"></div>
 			    	</div>
 
-					
+					<!-- 조리 순서 -->
 					<label>조리 순서</label>
 					<div class="stepBox">
 						<div class="stepInputs">
@@ -67,8 +68,10 @@
 						<div id="stepList" class="stepList"></div>
 					</div>
 			
+					<!-- 대표 사진 -->
 					<label for="recipeImage">대표 사진</label>
-					<input type="file" id="recipeImage" class="recipeInput" accept="image/*" />
+					<input type="file" id="recipeImage" name="recipeImage"
+						   class="recipeInput" accept="image/*" />
 					<span class="helpText">(JPG/PNG 권장 · 1장)</span>
 
 					<div id="formButtons">
