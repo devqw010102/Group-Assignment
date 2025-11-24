@@ -1,4 +1,4 @@
-/* ============ 초기화 ============ */
+/* ============ RESET ============ */
 * {
   margin: 0;
   padding: 0;
@@ -19,7 +19,7 @@ body {
 .header {
   background: #74B243;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
 }
 
 #logo {
@@ -58,7 +58,7 @@ body {
   color: white;
 }
 
-/* ============ Content 기본 ============ */
+/* ============ Content ============ */
 .content {
   background-color: #F1F1F2;
   padding: 10px;
@@ -67,14 +67,13 @@ body {
 .container {
   width: 1200px;
   margin: 0 auto;
-  background-color: white;    
+  background-color: white;
   padding: 30px;
-  box-sizing: border-box;
   display: grid;
   grid-template-columns: 1fr;
 }
 
-/* ============ 레시피 입력 폼 ============ */
+/* ============ Form Wrapper ============ */
 #recipeForm {
   width: clamp(640px, 70vw, 900px);
   margin: 30px auto 0;
@@ -86,9 +85,8 @@ body {
   box-shadow: 0 2px 6px rgba(0,0,0,.06);
 }
 
-/* ============ 인풋 공통 ============ */
+/* ============ 공통 INPUT ============ */
 .recipeInput {
-  display: block;
   margin: 0 0 20px;
   padding: 10px 12px;
   border: 1px solid #ccc;
@@ -96,39 +94,29 @@ body {
   font-size: 14px;
   background: #fff;
   width: 100%;
-  box-sizing: border-box;
 }
 
 label {
-  display: block;
   margin-bottom: 6px;
   font-weight: 600;
 }
 
-#writer {
-  width: 150px !important;   
-  display: inline-block;
-}
-
-/* 개별 width 조정 */
-#recipeTitle,
-#recipeCategory {
-  width: 300px;
-}
-
-#recipeDesc {
-  height: 130px;
-  resize: vertical;
-}
-
 .helpText {
-  display: block;
   margin: -6px 0 14px;
   color: #666;
   font-size: 12px;
 }
 
-/* ============ 재료 입력칸 ============ */
+/* ============ 레시피 이름 / 카테고리 width 조정 ============ */
+#recipeTitle {
+  width: 250px;  /* 원하는 크기로 조정 가능 */
+}
+
+#recipeCategory {
+  width: 250px;
+}
+
+/* ============ 재료 입력 구역 ============ */
 .ingredientBox {
   margin-bottom: 20px;
 }
@@ -156,11 +144,11 @@ label {
   background: #f7f7f7;
   cursor: pointer;
 }
-
 #btnAddIng:hover {
   background: #eee;
 }
 
+/* 재료 리스트 표시 */
 .ingredientList {
   display: flex;
   flex-direction: column;
@@ -169,18 +157,18 @@ label {
 
 .ingRow {
   display: grid;
-  grid-template-columns: 1fr 120px 120px 70px; 
+  grid-template-columns: 1fr 120px 120px 70px;
   gap: 10px;
   align-items: center;
 }
 
-.ingRow span {
+.ingRow input,
+.ingRow select {
   padding: 8px 10px;
   border: 1px solid #ddd;
   border-radius: 6px;
   background: #fff;
   font-size: 14px;
-  box-sizing: border-box;
 }
 
 .ingDel {
@@ -190,16 +178,13 @@ label {
   border-radius: 6px;
   cursor: pointer;
   font-size: 14px;
-  box-sizing: border-box;
 }
-
 .ingDel:hover {
   background: #fee;
   border-color: #e99;
 }
 
-/* ============ 조리 순서 입력칸 ============ */
-
+/* ============ 조리 순서 ============ */
 .stepBox {
   margin-bottom: 20px;
 }
@@ -208,7 +193,6 @@ label {
   display: flex;
   align-items: center;
   gap: 12px;
-  width: 100%;
 }
 
 #stepText.recipeInput {
@@ -216,7 +200,6 @@ label {
   margin-bottom: 0;
 }
 
-/* + 순서추가 버튼 */
 #btnAddStep {
   padding: 10px 16px;
   border: 1px solid #ccc;
@@ -225,82 +208,69 @@ label {
   cursor: pointer;
   font-size: 14px;
   height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  white-space: nowrap;
 }
-
 #btnAddStep:hover {
   background: #eee;
 }
 
-/* 리스트 전체 영역 */
 .stepList {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-top: 8px;
 }
 
-/* 조리 순서 한 줄 */
 .stepRow {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 6px 0;
+  gap: 8px;
 }
 
-/* 앞 번호 */
 .stepIndex {
-  width: 28px;
-  font-weight: 700;
-  font-size: 15px;
+  width: 24px;
+  font-weight: 600;
   text-align: right;
+  flex-shrink: 0;
 }
 
-/* 인라인 수정 input */
 .stepEditInput {
   flex: 1;
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background: #fff;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #fafafa;
   font-size: 14px;
 }
 
-/* 버튼 묶음 */
 .stepBtnGroup {
   display: flex;
-  gap: 6px;
+  gap: 4px;
 }
 
-/* 공통 버튼 */
 .stepBtn {
   border: 1px solid #ddd;
   background-color: #fff;
   border-radius: 6px;
-  padding: 6px 10px;
+  padding: 4px 8px;
   font-size: 12px;
   cursor: pointer;
-  transition: background-color 0.15s ease, transform 0.05s ease, border-color 0.15s;
 }
 
-/* 위/아래 버튼 */
 .stepBtn-move {
   width: 28px;
   height: 28px;
   padding: 0;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
-/* 삭제 버튼 */
 .stepBtn-delete {
   border-color: #ff9b9b;
   color: #e74c3c;
+}
+
+.stepBtn:hover {
+  background-color: #f3f3f3;
 }
 
 .stepBtn-delete:hover {
@@ -308,15 +278,7 @@ label {
   border-color: #ff6b6b;
 }
 
-.stepBtn:hover {
-  background-color: #f3f3f3;
-}
-
-.stepBtn:active {
-  transform: scale(0.94);
-}
-
-/* ============ 폼 버튼 ============ */
+/* ============ 폼 제출 버튼 ============ */
 #formButtons {
   margin-top: 16px;
   display: flex;
@@ -346,21 +308,23 @@ label {
   .ingRow {
     grid-template-columns: 1fr 1fr;
   }
+
+  #recipeTitle {
+    width: 100%;
+  }
+
+  #recipeCategory {
+    width: 100%;
+  }
 }
 
 @media (max-width: 480px) {
   #recipeForm {
     width: 100%;
-    margin: 20px auto;
+    padding: 16px;
     border-left: none;
     border-right: none;
-    padding: 16px;
     box-shadow: none;
-  }
-
-  #recipeTitle,
-  #recipeCategory {
-    width: 100%;
   }
 
   .ingredientInputs {
