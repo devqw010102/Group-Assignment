@@ -59,4 +59,5 @@ https://www.10000recipe.com/index.html
   2. 레시피 수정(재료, 조리방법) : 모두 삭제하면 추가버튼 작동 X
   3. admin 로그인 시 회원 수정 hidden
   4. index 카테고리별 정렬
+  5. 이미지 null 처리
 </pre>
