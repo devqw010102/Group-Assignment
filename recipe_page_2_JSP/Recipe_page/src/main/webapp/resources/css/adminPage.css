@@ -1,4 +1,62 @@
-/* 관리자 페이지 전용 CSS */
+/* ============ 초기화 ============ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #fff;
+  color: #222;
+}
+
+#wrap {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ============ 헤더 ============ */
+.header {
+  background: #74B243;
+  display: flex;
+  justify-content: center; 
+}
+
+#logo {
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+}
+
+.navigate ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 10px 0 0 10px;
+  padding: 0;
+}
+
+.navigate li {
+  padding: 10px;
+  margin: 10px;
+  color: #fff;
+  width: 200px;
+  cursor: pointer;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.navigate li:hover {
+  background: rgba(255, 255, 255, .12);
+}
+
+.navigate a:visited,
+.navigate a:link {
+  text-decoration: none;
+  color: white;
+}
 
 /* 바깥 박스 조금 카드 느낌 나게 */
 .content .container {
