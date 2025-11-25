@@ -24,7 +24,7 @@
     <meta charset="UTF-8">
     <title>관리자 페이지 - 회원 관리</title>
 
-    <link rel="stylesheet" href="resources/css/addRecipe.css">
+    
     <link rel="stylesheet" href="resources/css/adminPage.css">
 </head>
 
