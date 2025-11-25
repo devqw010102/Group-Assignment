@@ -11,9 +11,6 @@
     1. 관리자 전용 페이지 추가
 
     2. 회원 탈퇴
-    
-    3. 이미지 업로드 파일명 겹쳤을 때 중복파일을 업로드하는 경우 => X, 다른 레시피에 다른 이미지가 파일이름만 같을 경우 덮어쓰기됨, 현상태 유지
-        3-1) 이미지 수정 시 수정전 이미지파일 삭제?
 </pre>
 
 ---
@@ -35,7 +32,7 @@
  | ----- | ------ | ------| ------|
  | index | login | register | addRecipe |
  | recipeUpdate | |          | memberUpdate |  
- | login, register 기능 | | | |
+ | login, register 기능 | | | adminPage |
 
 ---
 
