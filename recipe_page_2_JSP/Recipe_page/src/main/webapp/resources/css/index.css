@@ -120,3 +120,14 @@
 .tab-content.active {
   display: block;
 }
+
+/* 필터 */
+
+.filter-bar {
+    margin: 20px 0;
+    text-align: center;
+}
+#filterCategory {
+    padding: 8px 12px;
+    font-size: 1rem;
+}

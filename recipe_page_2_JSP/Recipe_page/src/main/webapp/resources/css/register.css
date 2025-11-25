@@ -77,6 +77,7 @@
     margin : 0 auto;
 	justify-content: center;
 	background-color: white;
+	text-align : center;
 }
 
 .form-card {
@@ -86,13 +87,15 @@
 }
 
 .signup-form {
-    width: 100%;
-    max-width: 750px;              /* 폼 크기 조정 */
+    width: 750px;
+    /*max-width: 750px;              /* 폼 크기 조정 */
     padding: 30px;
 	border: 1px solid #ccc;
 	border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    margin : 0 auto;
+    margin : 20px auto;
+    display : inline-block;
+    background-color: #f9f9f9;
 }
 
 .headline {

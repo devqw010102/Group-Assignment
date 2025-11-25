@@ -7,25 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
     <link rel="stylesheet" href="resources/css/register.css">
-    <script type = "text/javascript">
-    	function checkForm() {
-			if(!document.newMember.id.value) {
-				alert("아이디를 입력하세요.");
-				return false;
-			}
-			
-			if(!document.newMember.password.value) {
-				alert("비밀번호를 입력하세요.");
-				return false;
-			}
-			
-			if(document.newMember.password.value != document.newMember.password_confirm.value) {
-				alert("비밀번호를 동일하게 입력하세요.");
-				return false;
-			}
-    	}
-    	
-    </script>
 </head>
 <body>
 	<div id = "wrap">
@@ -38,7 +19,7 @@
                     <h2 class = "headline">회원가입</h2>
 	
                     <div class="form-card">
-				      <form action="processRegister.jsp" method="post" onsubmit="return checkForm(event)">
+				      <form action="processRegister.jsp" id = "registerForm" method="post" onsubmit="return checkForm(event)">
 				        <!-- 아이디 -->
 				        <div class="row">
 				          <label class="textLabel" for="username">아이디</label>
@@ -150,7 +131,7 @@
                 </div>
             </div>
         </div>
-		
+		<%@include file = "footer.jsp" %>
 	</div>
 	<script src = "resources/js/register.js"></script>
 </body>

@@ -1,4 +1,5 @@
 let sessionId = null;
+let allRecipes = [];
 
 document.addEventListener("DOMContentLoaded", async () => {
     await getSession();  // 세션 먼저 가져오기
@@ -15,7 +16,8 @@ async function loadRecipes() {
     try {
         const response = await fetch("recipeList.jsp");
         const recipes = await response.json();
-        renderRecipes(recipes);
+		allRecipes = recipes;
+        renderRecipes(allRecipes);
     } catch (err) {
         console.error(err);
     }
@@ -34,7 +36,7 @@ function renderRecipes(recipes) {
 		const data = item.data;
 		const id = item.id;
 		
-		console.log(id);
+		// console.log(id);
 		
 		const box = document.createElement('div');
 		box.className = 'box';
@@ -68,8 +70,15 @@ function renderRecipes(recipes) {
 		imageRow.style.gap = '20px';
 
 		// Image
-		const img = document.createElement('img');	
-		img.src = data.image;	
+		const img = document.createElement('img');
+		
+		let imageName= data.image;
+		
+		if(imageName == null || imageName == '' || imageName =='resources/images/null') 
+			img.src = 'resources/images/no-image.jpg'
+		else	
+			img.src = data.image;
+			
 		// img.alt = `요리 이미지 ${i + 1}`;
 		img.style.width = '250px';
 		img.style.height = '230px';
@@ -97,12 +106,9 @@ function renderRecipes(recipes) {
 		const btnContainer = document.createElement('div');
 		btnContainer.style.display = 'flex';
 		btnContainer.style.gap = '10px';
-		// btnContainer.style.marginTop = '10px';
 
-		// btnUpdate => recipeUpdate 로 이동
-		//  -- 레시피 작성자와 로그인된 작성자가 같을때만 버튼 보이기
 		const writer = item.member_id;
-		console.log(writer);
+		// console.log(writer);
 		if(sessionId == writer) {
 			const btnUpdate = document.createElement('button');
 				btnUpdate.textContent = '수정';
@@ -179,7 +185,6 @@ function renderRecipes(recipes) {
 		// Finish structure(ul, li) 
 		
 		// Tab3 Object
-		// Todo : 조리법 텍스트 많을때 박스 짤림 어떻게 해결? ex) 페이징 처리?
 		const content3 = document.createElement('div');
 		content3.className = 'tab-content';
 		const cookUl = document.createElement('ul');
@@ -226,3 +231,17 @@ function setActiveTab(activeTab, allTabs, activeContent, allContents) {
     activeTab.classList.add('active');
     activeContent.classList.add('active');
 }
+
+// Function Filter
+document.getElementById("filterCategory").addEventListener("change", (e) => {
+	const category = e.target.value;
+	
+	if(category === "ALL") {
+		renderRecipes(allRecipes);
+	}
+	else {
+		const filtered = allRecipes.filter(recipe => recipe.data.category === category);
+		renderRecipes(filtered);
+	}
+})
+

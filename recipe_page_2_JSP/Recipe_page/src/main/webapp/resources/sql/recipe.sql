@@ -50,7 +50,7 @@ INSERT INTO recipe(member_id, json) VALUES ('admin', q'[
 {
   "image": "resources/images/food-1.jpg",
   "name": "테스트용",
-  "category": "기타",
+  "category": "디저트",
   "ingredient": [
     "미니새송이버섯 : 1팩",
     "버터 : 20g",

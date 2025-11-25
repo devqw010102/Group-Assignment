@@ -32,21 +32,27 @@ function renderIngredientList() {
     list.innerHTML = "";
 
     ingredients.forEach((ing, i) => {
+		
+		// 문자열 파싱
+		let [name, rest] = ing.split(" : ");
+		let amount = rest ? rest.replace(/[^\d]/g, "") : "";
+		let unit   = rest ? rest.replace(/[\d\s]/g, "") : "";
+		
         const row = document.createElement("div");
         row.className = "ingRow";
 
         
 		row.innerHTML = `
-		    <input type="text" class="ingEditName" data-idx="${i}" value="${ing.name}">
-		    <input type="text" class="ingEditAmount" data-idx="${i}" value="${ing.amount}">
+		    <input type="text" class="ingEditName" data-idx="${i}" value="${name}">
+		    <input type="text" class="ingEditAmount" data-idx="${i}" value="${amount}">
 		    
 		    <select class="ingEditUnit" data-idx="${i}">
-		        <option value="g" ${ing.unit === "g" ? "selected" : ""}>g</option>
-		        <option value="ml" ${ing.unit === "ml" ? "selected" : ""}>ml</option>
-		        <option value="개" ${ing.unit === "개" ? "selected" : ""}>개</option>
-		        <option value="큰술" ${ing.unit === "큰술" ? "selected" : ""}>큰술</option>
-		        <option value="작은술" ${ing.unit === "작은술" ? "selected" : ""}>작은술</option>
-		        <option value="컵" ${ing.unit === "컵" ? "selected" : ""}>컵</option>
+		        <option value="g" ${unit  === "g" ? "selected" : ""}>g</option>
+		        <option value="ml" ${unit === "ml" ? "selected" : ""}>ml</option>
+		        <option value="개" ${unit === "개" ? "selected" : ""}>개</option>
+		        <option value="큰술" ${unit === "큰술" ? "selected" : ""}>큰술</option>
+		        <option value="작은술" ${unit === "작은술" ? "selected" : ""}>작은술</option>
+		        <option value="컵" ${unit === "컵" ? "selected" : ""}>컵</option>
 		    </select>
 
 		    <button type="button" class="ingDel" data-idx="${i}">삭제</button>
@@ -57,33 +63,38 @@ function renderIngredientList() {
 
 	// 이름 수정
 	document.querySelectorAll(".ingEditName").forEach(input => {
-	    input.addEventListener("input", () => {
-	        const index = Number(input.dataset.idx);
-	        ingredients[index].name = input.value;
+	        input.addEventListener("input", () => {
+	            const idx = Number(input.dataset.idx);
+	            let [_, rest] = ingredients[idx].split(" : ");
+	            ingredients[idx] = `${input.value} : ${rest}`;
+	        });
 	    });
-	});
 
-	// 수량 수정
-	document.querySelectorAll(".ingEditAmount").forEach(input => {
-	    input.addEventListener("input", () => {
-	        const index = Number(input.dataset.idx);
-	        ingredients[index].amount = input.value;
-	    });
-	});
+    // 수량 수정
+    document.querySelectorAll(".ingEditAmount").forEach(input => {
+        input.addEventListener("input", () => {
+            const idx = Number(input.dataset.idx);
+            let [name, rest] = ingredients[idx].split(" : ");
+            let unit = rest.replace(/[0-9\s]/g, "");
+            ingredients[idx] = `${name} : ${input.value}${unit}`;
+        });
+    });
 
-	// 단위 변경
-	document.querySelectorAll(".ingEditUnit").forEach(select => {
-	    select.addEventListener("change", () => {
-	        const index = Number(select.dataset.idx);
-	        ingredients[index].unit = select.value;
-	    });
-	});
+    // 단위 변경
+    document.querySelectorAll(".ingEditUnit").forEach(select => {
+        select.addEventListener("change", () => {
+            const idx = Number(select.dataset.idx);
+            let [name, rest] = ingredients[idx].split(" : ");
+            let amount = rest.replace(/[^\d]/g, "");
+            ingredients[idx] = `${name} : ${amount}${select.value}`;
+        });
+    });
 
-	// 삭제
+    // 삭제
     document.querySelectorAll(".ingDel").forEach(btn => {
         btn.addEventListener("click", () => {
-            const index = Number(btn.dataset.idx);
-            ingredients.splice(index, 1);
+            const idx = Number(btn.dataset.idx);
+            ingredients.splice(idx, 1);
             renderIngredientList();
         });
     });
