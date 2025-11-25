@@ -7,22 +7,13 @@
 ---
 
 ### Todo
-<pre>
-    1. SNS 로그인 추가
-        1-1) [구글 로그인] https://srrymn.tistory.com/49
-        1-2) https://srrymn.tistory.com/50?category=1211097
-        1-3) [네이버 로그인] https://thecorative.tistory.com/entry/SNS%EB%A1%9C%EA%B7%B8%EC%9D%B8%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%A1%9C%EA%B7%B8%EC%9D%B8-javascript%EB%A1%9C-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0-theCoding#google_vignette
+<pre>   
+    1. 관리자 전용 페이지 추가
+
+    2. 회원 탈퇴
     
-    2. 관리자 전용 페이지 추가
-
-    3. 회원 탈퇴
-    
-    4. 이미지 업로드 파일명 겹쳤을 때 중복파일을 업로드하는 경우 => X, 다른 레시피에 다른 이미지가 파일이름만 같을 경우 덮어쓰기됨, 현상태 유지
-        4-1) 이미지 수정 시 수정전 이미지파일 삭제?
-
-    5. admin 로그인 시 회원 수정 hidden
-
-    6. index 카테고리별 정렬
+    3. 이미지 업로드 파일명 겹쳤을 때 중복파일을 업로드하는 경우 => X, 다른 레시피에 다른 이미지가 파일이름만 같을 경우 덮어쓰기됨, 현상태 유지
+        3-1) 이미지 수정 시 수정전 이미지파일 삭제?
 </pre>
 
 ---
