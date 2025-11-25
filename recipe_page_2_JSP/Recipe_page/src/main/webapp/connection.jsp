@@ -1,31 +1,28 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%@ page import = "java.sql.*" %>
-<!DOCTYPE html>
-<html>
-<head>
-<title>Test_Page</title>
-</head>
-<body>
-	<%
-		Connection conn = null;
-	
-		try {
-			String url = "jdbc:oracle:thin:@localhost:1521:xe";
-			String user = "scott";
-			String password = "tiger";
-			
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			conn = DriverManager.getConnection(url, user, password);
-			out.println("데이터베이스 연결 성공");
-		}
-		catch(SQLException ex) {
-			out.println("데이터베이스 연결 실패<br>");
-			out.println(ex.getMessage());
-		}
-		finally {
-			if(conn != null)
-				conn.close();	
-		}
-	%>
-</body>
-</html>
+<%@ page import="java.sql.*" %>
+<%
+    // Oracle DB 접속 정보
+    String driver   = "oracle.jdbc.driver.OracleDriver";
+    String url      = "jdbc:oracle:thin:@localhost:1521:XE"; // DB 서버에 맞게 수정
+    String dbUser   = "scott"; // DB 계정
+    String dbPass   = "tiger"; // DB 비밀번호
+
+    Connection conn = null;
+
+    try {
+        // 1. 드라이버 로딩
+        Class.forName(driver);
+
+        // 2. 커넥션 생성
+        conn = DriverManager.getConnection(url, dbUser, dbPass);
+
+        // 자동 커밋 비활성화 (필요 시)
+        // conn.setAutoCommit(false);
+
+    } catch (ClassNotFoundException e) {
+        out.println("Oracle JDBC 드라이버 로딩 실패");
+        e.printStackTrace();
+    } catch (SQLException e) {
+        out.println("DB 연결 실패");
+        e.printStackTrace();
+    }
+%>

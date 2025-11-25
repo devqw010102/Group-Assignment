@@ -11,19 +11,12 @@
 	<div id="wrap">
 
 	    <%@ include file="menu.jsp" %>
-
 		<div class="content">
 			<div class="container">
 			
-		 		<form id="recipeForm"
-					  name="recipeForm"
-					  method="post"
-					  action="addRecipe_process.jsp"
-					  enctype="multipart/form-data">
+		 		<form id="recipeForm" method="post" action="addRecipe_process.jsp" enctype ="multipart/form-data">
 
-					<!-- 서버로 보낼 JSON / 날짜 -->
 					<input type="hidden" id="recipeJson" name="recipeJson" />
-					<input type="hidden" id="dateNow" name="dateNow" />
 
 			   		<label for="recipeTitle">레시피 이름</label>
 			   		<input type="text" id="recipeTitle" class="recipeInput" placeholder="예) 담백한 두부스테이크"/>
@@ -57,7 +50,6 @@
 			        	<div id="ingList" class="ingredientList"></div>
 			    	</div>
 
-					<!-- 조리 순서 -->
 					<label>조리 순서</label>
 					<div class="stepBox">
 						<div class="stepInputs">
@@ -68,10 +60,8 @@
 						<div id="stepList" class="stepList"></div>
 					</div>
 			
-					<!-- 대표 사진 -->
 					<label for="recipeImage">대표 사진</label>
-					<input type="file" id="recipeImage" name="recipeImage"
-						   class="recipeInput" accept="image/*" />
+					<input type="file" name = "recipeImage" id="recipeImage" class="recipeInput" accept="image/*" />
 					<span class="helpText">(JPG/PNG 권장 · 1장)</span>
 
 					<div id="formButtons">
@@ -83,7 +73,7 @@
 
 			</div>
 		</div>
-
+		<%@include file = "footer.jsp" %>
 		<script src="resources/js/addRecipe.js"></script>
 	</div>
 </body>

@@ -39,6 +39,7 @@
                 <div id="message"></div>
             </div>
         </div>
+        <%@include file = "footer.jsp" %>
 	</div>
 	
 	<script src="resources/js/login.js"></script>

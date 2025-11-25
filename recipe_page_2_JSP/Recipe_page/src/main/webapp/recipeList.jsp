@@ -14,7 +14,7 @@
     try {
         Class.forName("oracle.jdbc.driver.OracleDriver");
         conn = DriverManager.getConnection(url, user, password);
-        String sql = "SELECT id, json, member_id FROM recipe";
+        String sql = "SELECT id, json, member_id FROM recipe ORDER BY date_now DESC";
         ps = conn.prepareStatement(sql);
         rs = ps.executeQuery();
 

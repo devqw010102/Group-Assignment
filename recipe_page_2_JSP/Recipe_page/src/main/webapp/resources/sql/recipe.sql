@@ -18,13 +18,39 @@ SELECT * FROM USER_CONSTRAINTS
 
 SELECT * FROM RECIPE;
 
+SELECT * FROM RECIPE WHERE ID = '1';
+
 DESC RECIPE
 
 INSERT INTO recipe(member_id, json) VALUES ('admin', q'[
 {
   "image": "resources/images/food-1.jpg",
   "name": "새송이버섯버터굴소스볶음",
-  "category": "볶음 요리",
+  "category": "한식",
+  "ingredient": [
+    "미니새송이버섯 : 1팩",
+    "버터 : 20g",
+    "굴소스 : 1T",
+    "진간장 : 0.5T",
+    "통깨 약간"
+  ],
+  "cook": [
+    "새송이버섯은 길게 편 썰기한다.",
+    "팬을 달군 후 버터 20그램을 녹인다.",
+    "버터가 녹으면 새송이 버섯을 넣고 볶는다.",
+    "버섯이 반쯤 익었을 때 굴소스 1스푼 넣는다.",
+    "진간장도 0.5T 넣는다.",
+    "통깨도 넣어서 섞는다."
+  ]
+}
+]');
+
+
+INSERT INTO recipe(member_id, json) VALUES ('admin', q'[
+{
+  "image": "resources/images/food-1.jpg",
+  "name": "테스트용",
+  "category": "기타",
   "ingredient": [
     "미니새송이버섯 : 1팩",
     "버터 : 20g",
@@ -45,4 +71,4 @@ INSERT INTO recipe(member_id, json) VALUES ('admin', q'[
 commit;
 
 
-DROP TABLE recipe;
+-- DROP TABLE recipe;

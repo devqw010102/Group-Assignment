@@ -125,6 +125,11 @@ input {
   font-weight: bold;
 }
 
+input[type="submit"] {
+    background: #4CAF50;
+    color: white;
+}
+
 #login-btn:hover {
   background-color: #0000ff;
 }

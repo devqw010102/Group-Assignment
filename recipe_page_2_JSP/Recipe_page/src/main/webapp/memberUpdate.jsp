@@ -20,7 +20,7 @@
     ResultSet rs = null;
 
     try {
-        String sql = "SELECT id, name, gendar, birth, mail, phone, address FROM member WHERE id = ?";
+        String sql = "SELECT id, name, gender, birth, mail, phone, address FROM member WHERE id = ?";
         pstmt = conn.prepareStatement(sql);
         pstmt.setString(1, memberId);
         rs = pstmt.executeQuery();
@@ -28,7 +28,7 @@
         if (rs.next()) {
             id      = rs.getString("id");
             name    = rs.getString("name");
-            gender  = rs.getString("gendar");
+            gender  = rs.getString("gender");
             birth   = rs.getString("birth");
             mail    = rs.getString("mail");
             phone   = rs.getString("phone");

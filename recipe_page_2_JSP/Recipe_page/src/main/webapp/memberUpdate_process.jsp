@@ -55,7 +55,7 @@
         // member 테이블 업데이트
         String sql =
             "UPDATE member " +
-            "SET name = ?, gendar = ?, birth = ?, mail = ?, phone = ?, address = ? " +
+            "SET name = ?, gender = ?, birth = ?, mail = ?, phone = ?, address = ? " +
             "WHERE id = ?";
 
         pstmt = conn.prepareStatement(sql);

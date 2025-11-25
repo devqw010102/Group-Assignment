@@ -1,9 +1,11 @@
+/*
+
 const users = [
   { username: "admin", password: "1234" },
   { username: "hong", password: "abcd" },
   { username: "guest", password: "guest" }
 ];
-
+*/
 document.getElementById("login-btn").addEventListener("click", () => {
   const id = document.getElementById("username").value.trim();
   const pw = document.getElementById("password").value.trim();

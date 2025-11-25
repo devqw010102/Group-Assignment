@@ -226,6 +226,3 @@ function setActiveTab(activeTab, allTabs, activeContent, allContents) {
     activeTab.classList.add('active');
     activeContent.classList.add('active');
 }
-
-// 수정 버튼 눌렀을 때 해당 index 값 주고받는 함수 (recipeUpdate)
-// After dbconn

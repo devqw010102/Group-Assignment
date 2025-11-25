@@ -20,6 +20,8 @@
                 <div id = "boxs"></div>
             </div>
         </div>
+        
+        <%@include file = "footer.jsp" %>
     </div>
 
     <script type="module" src = "resources/js/index.js"></script>
