@@ -21,7 +21,7 @@
 
     5. admin 로그인 시 회원 수정 hidden
 
-    6. index 정렬?
+    6. index 카테고리별 정렬
 </pre>
 
 ---
