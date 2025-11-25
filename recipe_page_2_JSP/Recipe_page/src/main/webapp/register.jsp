@@ -25,10 +25,6 @@
 			}
     	}
     	
-    	function onReset() {
-    		location.reload(true);
-    	}
-    	
     </script>
 </head>
 <body>
@@ -154,7 +150,7 @@
                 </div>
             </div>
         </div>
-		<%@include file = "footer.jsp" %>
+		
 	</div>
 	<script src = "resources/js/register.js"></script>
 </body>

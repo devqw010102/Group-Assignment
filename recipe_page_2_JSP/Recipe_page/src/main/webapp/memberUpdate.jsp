@@ -5,9 +5,7 @@
 <%
     request.setCharacterEncoding("UTF-8");
 
-    // 로그인된 회원 ID
     String memberId = (String)session.getAttribute("sessionId");
-
     if (memberId == null) {
         out.println("로그인이 필요합니다.");
         return;
@@ -43,7 +41,7 @@
         try { if (pstmt != null) pstmt.close(); } catch(Exception ignore){}
     }
 
-    // 생년월일 분리
+    // 생일 분리
     String birthyy = "", birthmm = "", birthdd = "";
     if (birth != null && birth.contains("-")) {
         String[] b = birth.split("-");
@@ -70,9 +68,49 @@
 <head>
     <meta charset="UTF-8">
     <title>회원 정보 수정</title>
-    <link rel="stylesheet" href="resources/css/register.css">
+
+    <!-- 이 페이지 전용 CSS (register까지 통합 버전) -->
+    <link rel="stylesheet" href="resources/css/memberUpdate.css">
+
+    <!-- 탈퇴 confirm JS -->
+    <script>
+        function confirmDelete() {
+            return confirm("정말 회원 탈퇴하시겠습니까?\n탈퇴 후에는 복구가 불가능합니다.");
+        }
+        function clearAll() {
+        	 const form = document.getElementById("memberForm");
+        	    if (!form) return;   // 폼 못 찾으면 그냥 종료
+
+        	    // 🔹 text/password 비우기 (아이디는 제외)
+        	    form.querySelectorAll('input[type="text"], input[type="password"]').forEach(el => {
+        	        if (el.name !== 'id') {   // 아이디는 그대로
+        	            el.value = '';
+        	        }
+        	    });
+
+        	    // select 초기화
+        	    form.querySelectorAll('select').forEach(el => {
+        	        el.selectedIndex = 0;
+        	    });
+
+        	    // radio/checkbox 해제
+        	    form.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(el => {
+        	        el.checked = false;
+        	    });
+            }
+    </script>
+			    <%
+			    String error = request.getParameter("error");
+			    if ("1".equals(error)) {
+			%>
+			        <script>alert("입력 정보가 올바르지 않습니다. 다시 확인해주세요.");</script>
+			<%
+			    }
+			%>
 </head>
+
 <body>
+
 
 <div id="wrap">
 
@@ -85,9 +123,10 @@
                 <h2 class="headline">회원 정보 수정</h2>
 
                 <div class="form-card">
-                    <form action="memberUpdate_process.jsp" method="post">
+                    <!-- 정보 수정 폼 -->
+                    <form id="memberForm" action="memberUpdate_process.jsp" method="post">
 
-                        <!-- 아이디 (수정 불가) -->
+                        <!-- 아이디 -->
                         <div class="row">
                             <label class="textLabel">아이디</label>
                             <div class="control">
@@ -108,42 +147,26 @@
                         <div class="row">
                             <label class="textLabel">성별</label>
                             <div class="control radioGroup">
-                                <label>
-                                    <input type="radio" name="gender" value="남"
-                                        <%= "남".equals(gender) ? "checked" : "" %>> 남
-                                </label>
-
-                                <label>
-                                    <input type="radio" name="gender" value="여"
-                                        <%= "여".equals(gender) ? "checked" : "" %>> 여
-                                </label>
+                                <label><input type="radio" name="gender" value="남" <%= "남".equals(gender)?"checked":"" %>> 남</label>
+                                <label><input type="radio" name="gender" value="여" <%= "여".equals(gender)?"checked":"" %>> 여</label>
                             </div>
                         </div>
 
                         <!-- 생일 -->
                         <div class="row">
                             <label class="textLabel">생일</label>
-                            <div class="control">
-                                <div class="birth-group">
-                                    <input type="text" name="birthyy" maxlength="4"
-                                           value="<%= birthyy %>" placeholder="년">
-
-                                    <select name="birthmm">
-                                        <option value="">월</option>
-                                        <%
-                                            for (int m = 1; m <= 12; m++) {
-                                                String mm = (m < 10) ? "0" + m : "" + m;
-                                        %>
-                                            <option value="<%= mm %>"
-                                                <%= mm.equals(birthmm) ? "selected" : "" %>>
-                                                <%= m %>
-                                            </option>
-                                        <% } %>
-                                    </select>
-
-                                    <input type="text" name="birthdd" maxlength="2"
-                                           value="<%= birthdd %>" placeholder="일">
-                                </div>
+                            <div class="control birth-group">
+                                <input type="text" name="birthyy" maxlength="4" value="<%= birthyy %>" placeholder="년">
+                                <select name="birthmm">
+                                    <option value="">월</option>
+                                    <%
+                                        for (int m = 1; m <= 12; m++) {
+                                            String mm = (m<10)?"0"+m:""+m;
+                                    %>
+                                        <option value="<%=mm%>" <%=mm.equals(birthmm)?"selected":""%>><%=m%></option>
+                                    <% } %>
+                                </select>
+                                <input type="text" name="birthdd" maxlength="2" value="<%= birthdd %>" placeholder="일">
                             </div>
                         </div>
 
@@ -154,10 +177,10 @@
                                 <input type="text" name="mail1" value="<%= mail1 %>">
                                 <span>@</span>
                                 <select name="mail2">
-                                    <option value="naver.com" <%= "naver.com".equals(mail2) ? "selected" : "" %>>naver.com</option>
-                                    <option value="daum.net"  <%= "daum.net".equals(mail2)  ? "selected" : "" %>>daum.net</option>
-                                    <option value="gmail.com" <%= "gmail.com".equals(mail2) ? "selected" : "" %>>gmail.com</option>
-                                    <option value="nate.com"  <%= "nate.com".equals(mail2)  ? "selected" : "" %>>nate.com</option>
+                                    <option value="naver.com" <%= "naver.com".equals(mail2)?"selected":"" %>>naver.com</option>
+                                    <option value="daum.net"  <%= "daum.net".equals(mail2) ?"selected":"" %>>daum.net</option>
+                                    <option value="gmail.com" <%= "gmail.com".equals(mail2)?"selected":"" %>>gmail.com</option>
+                                    <option value="nate.com"  <%= "nate.com".equals(mail2) ?"selected":"" %>>nate.com</option>
                                 </select>
                             </div>
                         </div>
@@ -178,20 +201,25 @@
                             </div>
                         </div>
 
-                        <!-- 버튼 -->
+                        <!-- 버튼 줄 -->
                         <div class="btnRow">
-                            <button type="reset" class="btn ghost">리셋</button>
-                            <button type="submit" class="btn primary">정보 수정</button>
+                            <button type="button" class="btn ghost" onclick="clearAll();">리셋</button>
+                            <input type="submit" class="btn primary" value="정보 수정">
+                            <button type="button" class="btn delete"
+                                    onclick="if(confirmDelete()) location.href='memberDelete_process.jsp?id=<%= id %>';">
+                                회원 탈퇴
+                            </button>
                         </div>
 
                     </form>
-                </div>
-            </div>
+                </div><!-- /.form-card -->
 
-        </div>
-    </div>
+            </div><!-- /.signup-form -->
 
-</div>
+        </div><!-- /.container -->
+    </div><!-- /.content -->
+
+</div><!-- /#wrap -->
 
 </body>
 </html>
