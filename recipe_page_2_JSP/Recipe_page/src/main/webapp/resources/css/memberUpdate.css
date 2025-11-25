@@ -8,13 +8,13 @@
     width : 100%;
     margin : 0 auto;
 }
+
 /* Header */
 
 .header {
     background-color: #74B243;
     display: flex;
     justify-content: center;
-    
 }
 
 #logo {
@@ -26,7 +26,6 @@
 /* Navigate */
 
 .navigate {
-
 }
 
 .navigate ul, li {
@@ -71,12 +70,13 @@
     background-color: #F1F1F2;
     padding : 10px;
 }
-/* 회원가입 박스 */
+
+/* 회원가입/정보수정 박스 공통 */
 .container {
     width : 1200px;
     margin : 0 auto;
-	justify-content: center;
-	background-color: white;
+    justify-content: center;
+    background-color: white;
 }
 
 .form-card {
@@ -87,10 +87,10 @@
 
 .signup-form {
     width: 100%;
-    max-width: 750px;              /* 폼 크기 조정 */
+    max-width: 750px;
     padding: 30px;
-	border: 1px solid #ccc;
-	border-radius: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     margin : 0 auto;
 }
@@ -152,34 +152,39 @@ select:focus {
 
 /* 주소 */
 .divAddress {
-	width : 450px;
+    width : 450px;
 }
 
 #address {
-	width : 100%;
+    width : 100%;
 }
 
-/* 버튼 */
-
+/* -----------------------------------
+   (원래 register.css의 버튼 스타일)
+   → 아래에서 memberUpdate용으로 덮어씀
+----------------------------------- */
+/* 기존 정의는 남겨두지만, 아래에서 오버라이드함 */
 .btnRow {
-	display: flex;
-	justify-content: space-around;
+    display: flex;
+    justify-content: space-around;
 }
 
 .btn {
-	margin-top : 15px;
-	padding: 10px 20px;
-	color: white;
-	border: none;
-	border-radius: 4px;
-	width: 40%;
-	font-weight: bold;
+    margin-top : 15px;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    width: 40%;
+    font-weight: bold;
 }
+
 .ghost {
-	background-color : gray;
+    background-color : gray;
 }
+
 .primary {
-	background-color : #4CAF50;
+    background-color : #4CAF50;
 }
 
 input[type="submit"],
@@ -197,6 +202,7 @@ input[type="submit"] {
     background: #4CAF50;
     color: white;
 }
+
 input[type="submit"]:hover {
     background: #45a049;
 }
@@ -204,6 +210,65 @@ input[type="submit"]:hover {
 input[type="reset"] {
     background: #ccc;
 }
+
 input[type="reset"]:hover {
     background: #b3b3b3;
+}
+
+/* ===========================
+   🔥 회원정보수정 페이지용 버튼 오버라이드
+   (이 파일을 쓰는 페이지에서 우선 적용)
+=========================== */
+
+/* 버튼 줄 : 오른쪽으로 정렬 + 간격 */
+.btnRow {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;   /* 오른쪽 정렬 */
+    gap: 8px;                    /* 버튼 사이 간격 */
+    margin-top: 20px;
+}
+
+/* 공통 버튼(리셋, 수정, 탈퇴) 크기 통일 */
+.btnRow .btn {
+    padding: 6px 14px;           /* 더 작게 */
+    font-size: 13px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: 0.15s ease;
+    font-weight: 500;
+    width: auto;                 /* 40% 폭 제거 */
+    margin-top: 0;               /* 위 여백 제거 */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+/* 리셋(회색) */
+.btnRow .btn.ghost {
+    background-color: #9e9e9e;
+    color: #ffffff;
+}
+.btnRow .btn.ghost:hover {
+    background-color: #7e7e7e;
+}
+
+/* 정보 수정(초록색) */
+.btnRow .btn.primary {
+    background-color: #4CAF50;
+    color: #ffffff;
+}
+.btnRow .btn.primary:hover {
+    background-color: #43a047;
+}
+
+/* 회원 탈퇴(빨간색) */
+.btnRow .btn.delete {
+    background-color: #e53935;
+    color: #ffffff;
+}
+.btnRow .btn.delete:hover {
+    background-color: #c62828;
 }

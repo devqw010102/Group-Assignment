@@ -1,0 +1,112 @@
+/* 관리자 페이지 전용 CSS */
+
+/* 바깥 박스 조금 카드 느낌 나게 */
+.content .container {
+    max-width: 900px;
+    margin: 30px auto;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    padding: 24px 28px;
+}
+
+/* 상단 제목 */
+.admin-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+/* 검색 영역 */
+.admin-search {
+    margin-bottom: 16px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 14px;
+}
+
+.admin-search input[type="text"] {
+    flex: 1;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.admin-search button {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background: #f7f7f7;
+    cursor: pointer;
+    font-size: 13px;
+    white-space: nowrap;
+}
+.admin-search button:hover {
+    background: #eee;
+}
+
+/* 회원 테이블 */
+table.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 14px;
+    border-radius: 8px;
+    overflow: hidden; /* 둥근 모서리 적용 */
+    background: #fff;
+}
+
+table.admin-table thead {
+    background: #f5f7fa;
+}
+
+table.admin-table th,
+table.admin-table td {
+    border: 1px solid #e3e5e8;
+    padding: 10px 8px;
+    text-align: center;
+}
+
+table.admin-table th {
+    font-weight: 600;
+}
+
+/* 아이디/이름/이메일 왼쪽 정렬 */
+table.admin-table td:nth-child(1),
+table.admin-table td:nth-child(2),
+table.admin-table td:nth-child(4) {
+    text-align: left;
+    padding-left: 14px;
+}
+
+/* 짝수 행 줄무늬 */
+table.admin-table tbody tr:nth-child(even) {
+    background: #fafafa;
+}
+
+/* 마우스 오버 */
+table.admin-table tbody tr:hover {
+    background: #f0f7ff;
+}
+
+/* 버튼 공통 */
+.btn-small {
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background: #fff;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/* 삭제 버튼 */
+.btn-delete {
+    border-color: #ff9b9b;
+    color: #e74c3c;
+}
+.btn-delete:hover {
+    background: #ffecec;
+    border-color: #ff6b6b;
+}
