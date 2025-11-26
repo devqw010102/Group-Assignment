@@ -5,24 +5,24 @@ window.addEventListener("DOMContentLoaded", () => {
     document.getElementById("btnAddIng").addEventListener("click", onAddIngredient);
     document.getElementById("btnAddStep").addEventListener("click", onAddStep);
     document.getElementById("btnSubmit").addEventListener("click", onSubmit);
-    document.getElementById("btnCancel").addEventListener("click", () => history.back());	
+    document.getElementById("btnCancel").addEventListener("click", () => history.back());
 });
 
 /* ======================= 재료 ======================= */
 
+// 현재 HTML 기준: 입력창 1개 (id="ingText")
 function onAddIngredient() {
-    const name   = document.getElementById("ingName").value.trim();
-    const amount = document.getElementById("ingAmount").value.trim();
-    const unit   = document.getElementById("ingUnit").value;
+    const input = document.getElementById("ingText");
+    const text  = input.value.trim();
 
-  if(!name || !amount) return alert("재료명과 수량을 입력해주세요.");
+    if (!text) {
+        alert("재료를 입력해주세요.");
+        return;
+    }
 
-  	const ingStr = `${name} : ${amount}${unit}`;
-	ingredients.push(ingStr);
-	
-    document.getElementById("ingName").value = "";
-    document.getElementById("ingAmount").value = "";
-    document.getElementById("ingUnit").value = "g";
+    // "간장 1큰술" 같은 한 줄 문자열로 저장
+    ingredients.push(text);
+    input.value = "";
 
     renderIngredientList();
 }
@@ -32,66 +32,32 @@ function renderIngredientList() {
     list.innerHTML = "";
 
     ingredients.forEach((ing, i) => {
-		
-		// 문자열 파싱
-		let [name, rest] = ing.split(" : ");
-		let amount = rest ? rest.replace(/[^\d]/g, "") : "";
-		let unit   = rest ? rest.replace(/[\d\s]/g, "") : "";
-		
         const row = document.createElement("div");
         row.className = "ingRow";
 
-        
-		row.innerHTML = `
-		    <input type="text" class="ingEditName" data-idx="${i}" value="${name}">
-		    <input type="text" class="ingEditAmount" data-idx="${i}" value="${amount}">
-		    
-		    <select class="ingEditUnit" data-idx="${i}">
-		        <option value="g" ${unit  === "g" ? "selected" : ""}>g</option>
-		        <option value="ml" ${unit === "ml" ? "selected" : ""}>ml</option>
-		        <option value="개" ${unit === "개" ? "selected" : ""}>개</option>
-		        <option value="큰술" ${unit === "큰술" ? "selected" : ""}>큰술</option>
-		        <option value="작은술" ${unit === "작은술" ? "selected" : ""}>작은술</option>
-		        <option value="컵" ${unit === "컵" ? "selected" : ""}>컵</option>
-		    </select>
-
-		    <button type="button" class="ingDel" data-idx="${i}">삭제</button>
-		`;
+        row.innerHTML = `
+            <input type="text" 
+                   class="ingEditInput" 
+                   data-idx="${i}" 
+                   value="${ing}">
+            <button type="button" 
+                    class="ingDel" 
+                    data-idx="${i}">삭제</button>
+        `;
 
         list.appendChild(row);
     });
 
-	// 이름 수정
-	document.querySelectorAll(".ingEditName").forEach(input => {
-	        input.addEventListener("input", () => {
-	            const idx = Number(input.dataset.idx);
-	            let [_, rest] = ingredients[idx].split(" : ");
-	            ingredients[idx] = `${input.value} : ${rest}`;
-	        });
-	    });
-
-    // 수량 수정
-    document.querySelectorAll(".ingEditAmount").forEach(input => {
+    // 내용 수정
+    list.querySelectorAll(".ingEditInput").forEach(input => {
         input.addEventListener("input", () => {
             const idx = Number(input.dataset.idx);
-            let [name, rest] = ingredients[idx].split(" : ");
-            let unit = rest.replace(/[0-9\s]/g, "");
-            ingredients[idx] = `${name} : ${input.value}${unit}`;
-        });
-    });
-
-    // 단위 변경
-    document.querySelectorAll(".ingEditUnit").forEach(select => {
-        select.addEventListener("change", () => {
-            const idx = Number(select.dataset.idx);
-            let [name, rest] = ingredients[idx].split(" : ");
-            let amount = rest.replace(/[^\d]/g, "");
-            ingredients[idx] = `${name} : ${amount}${select.value}`;
+            ingredients[idx] = input.value;
         });
     });
 
     // 삭제
-    document.querySelectorAll(".ingDel").forEach(btn => {
+    list.querySelectorAll(".ingDel").forEach(btn => {
         btn.addEventListener("click", () => {
             const idx = Number(btn.dataset.idx);
             ingredients.splice(idx, 1);
@@ -104,7 +70,7 @@ function renderIngredientList() {
 
 function onAddStep() {
     const txt = document.getElementById("stepText").value.trim();
-    if (txt === "") {
+    if (!txt) {
         alert("조리 순서를 입력하세요.");
         return;
     }
@@ -122,83 +88,81 @@ function renderStepList() {
         const row = document.createElement("div");
         row.className = "stepRow";
 
-		row.innerHTML = `
-		    <span class="stepIndex">${i + 1}.</span>
+        row.innerHTML = `
+            <span class="stepIndex">${i + 1}.</span>
 
-		    <input type="text" 
-		           class="stepEditInput"
-		           value="${step}"
-		           data-idx="${i}"/>
+            <input type="text" 
+                   class="stepEditInput"
+                   value="${step}"
+                   data-idx="${i}"/>
 
-		    <div class="stepBtnGroup">
-		        <button type="button" class="stepBtn stepBtn-move stepUp" data-idx="${i}">▲</button>
-		        <button type="button" class="stepBtn stepBtn-move stepDown" data-idx="${i}">▼</button>
-		        <button type="button" class="stepBtn stepBtn-delete stepDel" data-idx="${i}">삭제</button>
-		    </div>
-		`;
+            <div class="stepBtnGroup">
+                <button type="button" class="stepBtn stepBtn-move stepUp" data-idx="${i}">▲</button>
+                <button type="button" class="stepBtn stepBtn-move stepDown" data-idx="${i}">▼</button>
+                <button type="button" class="stepBtn stepBtn-delete stepDel" data-idx="${i}">삭제</button>
+            </div>
+        `;
 
         list.appendChild(row);
     });
 
-	
-	// 내용 수정
-	    list.querySelectorAll(".stepEditInput").forEach(input => {
-	        input.addEventListener("input", () => {
-	            const index = Number(input.dataset.idx);
-	            steps[index] = input.value;
-	        });
-	    });
+    // 내용 수정
+    list.querySelectorAll(".stepEditInput").forEach(input => {
+        input.addEventListener("input", () => {
+            const index = Number(input.dataset.idx);
+            steps[index] = input.value;
+        });
+    });
 
-	    // 삭제
-	    list.querySelectorAll(".stepDel").forEach(btn => {
-	        btn.addEventListener("click", () => {
-	            const index = Number(btn.dataset.idx);
-	            steps.splice(index, 1);
-	            renderStepList();
-	        });
-	    });
+    // 삭제
+    list.querySelectorAll(".stepDel").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const index = Number(btn.dataset.idx);
+            steps.splice(index, 1);
+            renderStepList();
+        });
+    });
 
-	    // 위로
-	    list.querySelectorAll(".stepUp").forEach(btn => {
-	        btn.addEventListener("click", () => {
-	            const index = Number(btn.dataset.idx);
-	            if (index === 0) return;
+    // 위로
+    list.querySelectorAll(".stepUp").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const index = Number(btn.dataset.idx);
+            if (index === 0) return;
 
-	            const tmp = steps[index - 1];
-	            steps[index - 1] = steps[index];
-	            steps[index] = tmp;
+            const tmp = steps[index - 1];
+            steps[index - 1] = steps[index];
+            steps[index] = tmp;
 
-	            renderStepList();
-	        });
-	    });
+            renderStepList();
+        });
+    });
 
-	    // 아래로
-	    list.querySelectorAll(".stepDown").forEach(btn => {
-	        btn.addEventListener("click", () => {
-	            const index = Number(btn.dataset.idx);
-	            if (index === steps.length - 1) return;
+    // 아래로
+    list.querySelectorAll(".stepDown").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const index = Number(btn.dataset.idx);
+            if (index === steps.length - 1) return;
 
-	            const tmp = steps[index + 1];
-	            steps[index + 1] = steps[index];
-	            steps[index] = tmp;
+            const tmp = steps[index + 1];
+            steps[index + 1] = steps[index];
+            steps[index] = tmp;
 
-	            renderStepList();
-	        });
-	    });
+            renderStepList();
+        });
+    });
 }
 
 /* ======================= 제출 ======================= */
 
 function onSubmit() {
     const title      = document.getElementById("recipeTitle").value.trim();
-    const category   = document.getElementById("recipeCategory").value;  
+    const category   = document.getElementById("recipeCategory").value;
     const imageInput = document.getElementById("recipeImage");
 
-    if (title === "") {
+    if (!title) {
         alert("레시피 이름을 입력하세요.");
         return;
     }
-
     if (ingredients.length === 0) {
         alert("재료를 1개 이상 추가하세요.");
         return;
@@ -208,21 +172,23 @@ function onSubmit() {
         return;
     }
 
-    
     let imageName = "";
     if (imageInput.files.length > 0) {
         imageName = imageInput.files[0].name;
     }
-    
-	const recipeObj = {
-	    name: title,
-	    category: category,
-	    ingredient: ingredients,
-	    cook: steps,
-	    image: imageName
-	};
-    
+
+    const recipeObj = {
+        name: title,
+        category: category,
+        ingredient: ingredients, // 문자열 배열
+        cook: steps,
+        image: imageName
+    };
+
     document.getElementById("recipeJson").value = JSON.stringify(recipeObj);
-    // console.log("보낼 JSON:", JSON.stringify(recipeObj));
+
+    const now = new Date();
+    document.getElementById("dateNow").value = now.toISOString();
+
     document.getElementById("recipeForm").submit();
 }
