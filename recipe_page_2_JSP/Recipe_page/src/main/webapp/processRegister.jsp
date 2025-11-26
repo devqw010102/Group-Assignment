@@ -119,7 +119,7 @@
 	
 	PreparedStatement pstmt = null;
 	try {
-		String sql = "INSERT INTO member(id, password, name, gender, birth, mail, phone, address)" + 
+		String sql = "INSERT INTO member(id, password, name, gender, birth, mail, phone, address, regist_day)" + 
 					 "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		pstmt = conn.prepareStatement(sql);
@@ -148,4 +148,5 @@
 		
 	}
 %>
+
 
