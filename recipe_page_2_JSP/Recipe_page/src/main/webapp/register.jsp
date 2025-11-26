@@ -19,7 +19,7 @@
                     <h2 class = "headline">회원가입</h2>
 					<p class = "requiredText">*는 필수</p>
                     <div class="form-card">
-				      <form action="processRegister.jsp" id = "registerForm" method="post" onsubmit="return checkForm()">
+				      <form action="processRegister.jsp" id = "registerForm" method="post" >
 				        <!-- 아이디 -->
 				        <div class="row">
 				          <label class="textLabel" for="username">아이디<span class = "required">*</span></label>
@@ -42,17 +42,20 @@
 				        <div class="row">
 				          <label class="textLabel" for="confirm">비밀번호 확인<span class = "required">*</span></label>
 				          <div class="control">
-				            <input type="password" id="confirm" name="password_confirm" placeholder="비밀번호 확인" autocomplete="new-password">
+				            <input type="password" id="confirm" name="password_confirm" placeholder="비밀번호 확인" autocomplete="new-password" onblur = "checkPwdCon()">
 				          </div>
+				          <label id = "pwdConResult" class = "checkText"></label>
 				        </div>
 				
 				        <!-- 이름 -->
 				        <div class="row">
 				          <label class="textLabel" for="name">이름<span class = "required">*</span></label>
 				          <div class="control">
-				            <input type="text" id="name" name="name" placeholder="실명을 입력하세요">
+				            <input type="text" id="name" name="name" placeholder="실명을 입력하세요" onblur = "checkName()">
 				          </div>
+				          <label id = "nameResult" class = "checkText"></label>
 				        </div>
+				        
 				
 				        <!-- 성별 -->
 				        <div class="row">
