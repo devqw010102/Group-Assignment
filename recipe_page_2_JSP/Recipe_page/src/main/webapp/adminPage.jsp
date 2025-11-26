@@ -84,11 +84,14 @@
                         boolean hasRow = false;
 
                         while (rs.next()) {
-                       	 String memberId = rs.getString("id");  // 또는 "member_id"
-                         if ("admin".equals(memberId)) {
-                         continue;   // admin은 건너뛰기
-                             }
-                %>
+                            String memberId = rs.getString("id");
+                            if ("admin".equals(memberId)) {
+                                continue;   
+                            }
+
+                            hasRow = true;  
+
+                        %>
                 <tr>
                     <td><%= rs.getString("id") %></td>
                     <td><%= rs.getString("name") %></td>
@@ -113,9 +116,11 @@
 
                         if (!hasRow) {
                 %>
-                <tr>
-                    <td colspan="7">검색 결과가 없습니다.</td>
-                </tr>
+              <c:if test="${empty memberList}">
+					    <tr>
+					      <td colspan="7" style="text-align:center;">검색 결과가 없습니다.</td>
+					    </tr>
+					  </c:if>
                 <%
                         }
                     } catch (Exception e) {
