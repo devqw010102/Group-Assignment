@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	const form = document.getElementById("registerForm");
     
 	if(form) form.onsubmit = checkForm;
-})
+});
 
 // check Form
 function checkForm() {
