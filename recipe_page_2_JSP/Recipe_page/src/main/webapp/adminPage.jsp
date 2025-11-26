@@ -23,8 +23,6 @@
 <head>
     <meta charset="UTF-8">
     <title>관리자 페이지 - 회원 관리</title>
-
-    
     <link rel="stylesheet" href="resources/css/adminPage.css">
 </head>
 
@@ -86,7 +84,10 @@
                         boolean hasRow = false;
 
                         while (rs.next()) {
-                            hasRow = true;
+                       	 String memberId = rs.getString("id");  // 또는 "member_id"
+                         if ("admin".equals(memberId)) {
+                         continue;   // admin은 건너뛰기
+                             }
                 %>
                 <tr>
                     <td><%= rs.getString("id") %></td>
