@@ -1,24 +1,44 @@
-// Validate 2 Register
-function  validateForm() {
-	
+const idResult = document.getElementById("idResult");
+const pwdResult = document.getElementById("pwdResult");
+const pwdConResult = document.getElementById("pwdConResult");
+const nameResult = document.getElementById("nameResult");
+
+document.addEventListener("DOMContentLoaded", function() {
 	const form = document.getElementById("registerForm");
-	const id = document.getElementById("username");
-	const pwd = document.getElementById("password");
-	const pwd_con = document.getElementById("confirm");
+    
+	if(form) form.onsubmit = checkForm;
+})
+
+// check Form
+function checkForm() {
 	
+	const idResult = document.getElementById("idResult");
+	const pwdResult = document.getElementById("pwdResult");
+	const pwdConResult = document.getElementById("pwdConResult");
+	const nameResult = document.getElementById("nameResult");
+	
+	checkId();
+	checkPwd();
+	checkPwdCon();
+	checkName();
+	
+	if(idResult.innerHTML.includes("✔") && pwdResult.innerHTML.includes("✔") && pwdConResult.innerHTML.includes("✔") && nameResult.innerHTML.includes("✔"))   {
+		return true;	
+	}
+	alert("입력 내용을 확인하세요");
+	return false;	
 }
 
 function checkId() {
     const id = document.getElementById("username").value.trim();
-    const idResult = document.getElementById("idResult");
-
+    
     if (!id) {
         idResult.textContent = "";
         return;
     }
 	
 	if (id.length < 4 || id.length > 20) {
-	    idResult.innerHTML = "<span style='color:red'>아이디는 4~20글자여야 합니다.</span>";
+	    idResult.innerHTML = "<span style='color:red'>❌ 4 ~ 20자 이내여야 합니다.</span>";
 	    return;
 	}
 
@@ -38,7 +58,7 @@ function checkId() {
 
 function checkPwd() {
 	const pwd = document.getElementById("password").value.trim();
-	const pwdResult = document.getElementById("pwdResult");
+	
 	
 	if(!pwd) {
 	    pwdResult.textContent = "";
@@ -58,21 +78,48 @@ function checkPwd() {
 	xhr.send("password=" + encodeURIComponent(pwd) + "&type=checkPwd");
 }
 
-function checkForm() {
-	if(!document.newMember.id.value) {
-		alert("아이디를 입력하세요.");
-		return false;
+function checkPwdCon() {
+	const pwd = document.getElementById("password").value.trim();
+	const confirm = document.getElementById("confirm").value.trim();
+	
+	
+	if(!confirm) {
+		pwdConResult.textContent = "";
+		return;
 	}
 	
-	if(!document.newMember.password.value) {
-		alert("비밀번호를 입력하세요.");
-		return false;
+	const xhr = new XMLHttpRequest();
+	xhr.open("POST", "processRegister.jsp", true);
+	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	
+	xhr.onreadystatechange = function() {
+		if(xhr.readyState === 4 && xhr.status === 200) {
+			pwdConResult.innerHTML = xhr.responseText;
+		}
+	};
+	
+	xhr.send("password=" + encodeURIComponent(pwd) + "&confirm=" + encodeURIComponent(confirm) + "&type=checkPwdCon");
+}
+
+function checkName() {
+	const name = document.getElementById("name").value.trim();
+	
+	if(!name) {
+		nameResult.textContent = "❌";
+		return;
 	}
 	
-	if(document.newMember.password.value != document.newMember.password_confirm.value) {
-		alert("비밀번호를 동일하게 입력하세요.");
-		return false;
-	}
+	const xhr = new XMLHttpRequest();
+	xhr.open("POST", "processRegister.jsp", true);
+	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	
+	xhr.onreadystatechange = function() {
+		if(xhr.readyState === 4 && xhr.status === 200) {
+			nameResult.innerHTML = xhr.responseText;
+		}
+	};
+	
+	xhr.send("name=" + encodeURIComponent(name) + "&type=checkName");
 }
 
 function onReset() {
