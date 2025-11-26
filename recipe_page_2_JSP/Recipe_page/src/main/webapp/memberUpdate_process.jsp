@@ -5,14 +5,14 @@
 <%
     request.setCharacterEncoding("UTF-8");
 
-    // 1. 로그인 여부 확인
+    // 로그인 여부 확인
     String sessionId = (String)session.getAttribute("sessionId");
     if (sessionId == null) {
         response.sendRedirect("login.jsp");
         return;
     }
 
-    // 2. 어떤 회원을 수정할지 (폼에서 넘어온 id)
+    // 어떤 회원을 수정할지
     String id = request.getParameter("id");
     if (id == null || id.trim().equals("")) {
         out.println("잘못된 접근입니다. (id 없음)");
@@ -25,9 +25,9 @@
         return;
     }
 
-    // 3. 폼 값 받기
-    String name    = request.getParameter("name");      // ❗ 필수
-    String gender  = request.getParameter("gender");    // 선택
+    // 폼에서 넘어온 값들
+    String name    = request.getParameter("name");
+    String gender  = request.getParameter("gender");
 
     String birthyy = request.getParameter("birthyy");
     String birthmm = request.getParameter("birthmm");
@@ -66,7 +66,6 @@
     PreparedStatement pstmt = null;
 
     try {
-        // 7. 비밀번호는 건드리지 않고 나머지만 수정
         String sql =
             "UPDATE member " +
             "SET name = ?, gender = ?, birth = ?, mail = ?, phone = ?, address = ? " +

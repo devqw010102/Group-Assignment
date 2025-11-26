@@ -1,7 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ page import="java.util.*"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@ include file = "connection.jsp" %>
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -109,17 +107,19 @@
 
     // 전화번호
 	String phone = request.getParameter("phone");
-    if(phone == null) {
-    	phone = "미입력";
-    }
+	if(phone == null || phone.trim().equals("")) {
+	    phone = "미입력";
+	}
+	
+	// 주소
 	String address = request.getParameter("address");
-	if(address == null) {
-		address = "미입력";
+	if(address == null || address.trim().equals("")) {
+	    address = "미입력";
 	}
 	
 	PreparedStatement pstmt = null;
 	try {
-		String sql = "INSERT INTO member(id, password, name, gender, birth, mail, phone, address, regist_day)" + 
+		String sql = "INSERT INTO member(id, password, name, gender, birth, mail, phone, address)" + 
 					 "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		pstmt = conn.prepareStatement(sql);
@@ -148,5 +148,3 @@
 		
 	}
 %>
-
-

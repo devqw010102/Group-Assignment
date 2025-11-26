@@ -1,27 +1,47 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ page import="java.util.*"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+<%@ include file = "connection.jsp" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 
+	String type = request.getParameter("type");
 	String id = request.getParameter("id");
 	String pwd = request.getParameter("password");
+	
+	// Check Login
+	
+	if("checkAjax".equals(type)) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "SELECT * FROM member WHERE id = ? AND password = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, pwd);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				session.setAttribute("sessionId", id);
+				out.print("success");
+			}
+			else {
+				out.print("fail");
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			out.println(e.getMessage());
+		}
+		finally {
+			/*
+			if(rs != null) rs.close();
+			if(pstmt != null) pstmt.close();
+			if(conn != null) conn.close();
+			*/
+		}
+	}
 %>
 
-<sql:setDataSource var = "dataSource" url = "jdbc:oracle:thin:@localhost:1521:xe" driver = "oracle.jdbc.driver.OracleDriver" user = "scott" password = "tiger"/>
-
-<sql:query dataSource = "${dataSource }" var = "resultSet">
-	SELECT * FROM MEMBER WHERE ID = ? AND PASSWORD = ?
-	<sql:param value = "<%=id %>" />
-	<sql:param value = "<%=pwd %>" />
-</sql:query>
-
-<c:forEach var = "row" items = "${resultSet.rows }">
-	<%
-		session.setAttribute("sessionId", id);
-	%>
-	<c:redirect url = "index.jsp" />
-</c:forEach>
-
-<c:redirect url = "login.jsp?error=1"/>
