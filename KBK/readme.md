@@ -1,8 +1,6 @@
 ## Today 
 <pre>
-   1. 로그인 실패 시 출력 디자인
-   2. 회원가입 실패 시 출력 디자인
-   3. 회원가입 정규식, 입력 데이터 차단
+
 </pre>
 
 ### TODO
@@ -62,4 +60,12 @@ https://www.10000recipe.com/index.html
   4. index 카테고리별 정렬
   5. 이미지 null 처리
   6. 이미지 수정 시 수정 전 이미지파일 삭제
+</pre>
+
+#### 25-11-26
+<pre>
+   1. loginProcess, Script 수정(ajax 기능 추가)
+   2. registerProcess, Script 수정(ajax 기능 활용한 실시간 check 기능 추가)
+   3. 입력 데이터 차단(정규식), 필수 데이터 처리 완료
+</pre>
 </pre>
