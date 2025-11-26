@@ -114,8 +114,7 @@ input {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-
-#login-btn {
+.btn {
   padding: 10px 20px;
   background-color: #4CAF50;
   color: white;
@@ -125,16 +124,7 @@ input {
   font-weight: bold;
 }
 
-input[type="submit"] {
+.btn {
     background: #4CAF50;
     color: white;
-}
-
-#login-btn:hover {
-  background-color: #0000ff;
-}
-
-#message {
-  padding-bottom : 20px;
-  font-weight: bold;
 }
