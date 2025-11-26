@@ -176,7 +176,30 @@ label {
   gap: 10px;
   align-items: center;
 }
+.ingRow input,
+.ingRow select {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #fff;
+  width: 100%;
+  box-sizing: border-box;
+}
+.ingRow .ingDel {
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  box-sizing: border-box;
+}
 
+.ingRow .ingDel:hover {
+  background: #fee;
+  border-color: #e99;
+}
 
 .ingRow span {
   padding: 8px 10px;
