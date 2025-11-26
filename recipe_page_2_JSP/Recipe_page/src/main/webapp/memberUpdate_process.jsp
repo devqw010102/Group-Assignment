@@ -8,7 +8,7 @@
     // 로그인 여부 확인
     String sessionId = (String)session.getAttribute("sessionId");
     if (sessionId == null) {
-        out.println("로그인 후 이용해주세요.");
+    	response.sendRedirect("login.jsp");
         return;
     }
 
@@ -38,6 +38,10 @@
     String phone   = request.getParameter("phone");
     String address = request.getParameter("address");
 
+    // 🔹 비밀번호 / 비밀번호 확인 (필수)
+    String password          = request.getParameter("password");
+    String password_confirm  = request.getParameter("password_confirm");
+
     // 생일 조합 (모두 입력된 경우에만)
     String birth = null;
     if (birthyy != null && !birthyy.trim().equals("") &&
@@ -47,21 +51,21 @@
         birth = birthyy + "-" + birthmm + "-" + birthdd;   // 예: 1999-03-15
     }
 
-    // 이메일 조합
+    
     String email = null;
     if (mail1 != null && !mail1.trim().equals("") &&
         mail2 != null && !mail2.trim().equals("")) {
-        email = mail1 + "@" + mail2;
+        email = mail1.trim() + "@" + mail2.trim();
     }
 
-    // 🔹 간단 입력 유효성 체크
-    // 원하는 조건 더 추가해도 됨 (예: 전화번호 길이, 이름 최소 글자 수 등)
-    if (name == null || name.trim().equals("") ||
-        phone == null || phone.trim().equals("") ||
-        email == null || email.trim().equals("")) {
+    
+    if (id == null || id.trim().equals("") ||
+        name == null || name.trim().equals("") ||
+        password == null || password.trim().equals("") ||
+        password_confirm == null || password_confirm.trim().equals("") ||
+        !password.equals(password_confirm)) {
 
-        // 값이 이상하면 다시 수정 페이지로 돌려보내기
-        // 필요하면 error 코드/메시지 더 붙여도 됨
+    
         response.sendRedirect("memberUpdate.jsp?error=1");
         return;
     }
@@ -71,23 +75,24 @@
     try {
         String sql =
             "UPDATE member " +
-            "SET name = ?, gender = ?, birth = ?, mail = ?, phone = ?, address = ? " +
+            "SET name = ?, password = ?, gender = ?, birth = ?, mail = ?, phone = ?, address = ? " +
             "WHERE id = ?";
 
         pstmt = conn.prepareStatement(sql);
 
         pstmt.setString(1, name);
-        pstmt.setString(2, gender);
-        pstmt.setString(3, birth);      // null이면 DB에 null로 들어감
-        pstmt.setString(4, email);
-        pstmt.setString(5, phone);
-        pstmt.setString(6, address);
-        pstmt.setString(7, id);
+        pstmt.setString(2, password);   
+        pstmt.setString(3, gender);
+        pstmt.setString(4, birth);     
+        pstmt.setString(5, email);      
+        pstmt.setString(6, phone);      
+        pstmt.setString(7, address);    
+        pstmt.setString(8, id);
 
         int result = pstmt.executeUpdate();
 
         if (result > 0) {
-            // 수정 성공 → 다시 수정 페이지로 이동
+            
             response.sendRedirect("memberUpdate.jsp");
         } else {
             out.println("수정 실패: 회원 정보를 찾을 수 없습니다.");
