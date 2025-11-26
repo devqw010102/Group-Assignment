@@ -86,7 +86,7 @@
     align-items :center;
 }
 
-.signup-form {
+.register-form {
     width: 750px;
     /*max-width: 750px;              /* 폼 크기 조정 */
     padding: 30px;
@@ -96,6 +96,10 @@
     margin : 20px auto;
     display : inline-block;
     background-color: #f9f9f9;
+}
+
+#registerForm {
+	width : 600px;
 }
 
 .headline {
@@ -209,4 +213,30 @@ input[type="reset"] {
 }
 input[type="reset"]:hover {
     background: #b3b3b3;
+}
+
+/* 필수 항목 텍스트 */
+.required {
+	color : red;
+}
+
+.requiredText {
+	text-align : right;
+	color : gray;
+	font-size : 0.8em;
+}
+
+/* Ajax 출력 텍스트 */
+.checkText {
+	font-size : 0.8em;
+	padding-left : 10px;
+}
+
+
+#idResult {
+	
+}
+
+#pwdResult {
+	
 }

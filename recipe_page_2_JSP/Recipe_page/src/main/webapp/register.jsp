@@ -15,30 +15,32 @@
 		
         <div class = "content">
             <div class = "container">
-                <div class="signup-form">
+                <div class="register-form">
                     <h2 class = "headline">회원가입</h2>
-	
+					<p class = "requiredText">*는 필수</p>
                     <div class="form-card">
-				      <form action="processRegister.jsp" id = "registerForm" method="post" onsubmit="return checkForm(event)">
+				      <form action="processRegister.jsp" id = "registerForm" method="post" onsubmit="return checkForm()">
 				        <!-- 아이디 -->
 				        <div class="row">
-				          <label class="textLabel" for="username">아이디</label>
+				          <label class="textLabel" for="username">아이디<span class = "required">*</span></label>
 				          <div class="control">
-				            <input type="text" id="username" name="id" placeholder="영문/숫자 4~20자" autocomplete="username">
+				            <input type="text" id="username" name="id" placeholder="영문/숫자 4~20자" autocomplete="username" onkeyup = "checkId()">
 				          </div>
+				          <label id = "idResult" class = "checkText"></label>
 				        </div>
 				
 				        <!-- 비밀번호 -->
 				        <div class="row">
-				          <label class="textLabel" for="password">비밀번호</label>
+				          <label class="textLabel" for="password">비밀번호<span class = "required">*</span></label>
 				          <div class="control">
-				            <input type="password" id="password" name="password" placeholder="최대 20자	" autocomplete="new-password">
+				            <input type="password" id="password" name="password" placeholder="영문 + 숫자 조합의 6 ~ 20자" autocomplete="new-password" onkeyup = "checkPwd()">
 				          </div>
+				          <label id = "pwdResult" class = "checkText"></label>
 				        </div>
 				
 				        <!-- 비밀번호 확인 -->
 				        <div class="row">
-				          <label class="textLabel" for="confirm">비밀번호 확인</label>
+				          <label class="textLabel" for="confirm">비밀번호 확인<span class = "required">*</span></label>
 				          <div class="control">
 				            <input type="password" id="confirm" name="password_confirm" placeholder="비밀번호 확인" autocomplete="new-password">
 				          </div>
@@ -46,7 +48,7 @@
 				
 				        <!-- 이름 -->
 				        <div class="row">
-				          <label class="textLabel" for="name">이름</label>
+				          <label class="textLabel" for="name">이름<span class = "required">*</span></label>
 				          <div class="control">
 				            <input type="text" id="name" name="name" placeholder="실명을 입력하세요">
 				          </div>
@@ -63,7 +65,7 @@
 				
 				        <!-- 생일 -->
 				        <div class="row">
-				          <label class="textLabel">생일</label>
+				          <label class="textLabel">생년월일</label>
 				          <div class="control">
 				            <div class="birth-group">
 				              <input type="text" name="birthyy" maxlength="4" placeholder="년(4자)" aria-label="출생연도 (년)">
@@ -126,6 +128,8 @@
 				          <button type="reset" class="btn ghost" onclick="onReset()">리셋</button>
 				          <button type="submit" class="btn primary">등록</button>
 				        </div>
+				        
+				        
 				      </form>
 				    </div>
                 </div>

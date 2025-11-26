@@ -1,11 +1,3 @@
-/*
-
-	반례
-		1) [재료, 조리방법] : 추가버튼을 클릭하지않으면 삭제도 안됨
-		2) [재료, 조리방법] : 모두 삭제하면 새롭게 추가가 안됨
-
-*/
-
 window.addEventListener("DOMContentLoaded", () => {
 	document.getElementById("btnAddIng").addEventListener('click', onAddIngredient);
 	document.getElementById("btnAddCook").addEventListener('click', onAddStep);
