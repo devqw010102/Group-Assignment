@@ -231,12 +231,9 @@ input[type="reset"]:hover {
 	font-size : 0.8em;
 	padding-left : 10px;
 }
-
-
-#idResult {
-	
-}
-
-#pwdResult {
-	
-}
+/*
+#idResult { }
+#pwdResult { }
+#pwdConResult { }
+#nameResult { }
+*/
