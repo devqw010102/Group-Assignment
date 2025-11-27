@@ -5,21 +5,22 @@
 김병국, 강전홍, 박영기, 박주승
 
 ---
-
 ### Todo
 <pre>   
-    1. menu -> 보이는 것과 버튼 크기가 다름( div 박스 추가)
+    
 </pre>
 
 ---
 
-### 수정사항
+### 종합 후 수정사항
 <pre>
-    1. 레시피 철자 = 수정 完
-    2. Index 페이지 이미지 크기 조절 完
-    3. 재료 배열, 페이지에 추가 完
-    4. Tab1 이름 추가 完
-    5. 삭제 버튼 추가 完
+    1. memberUpdate.jsp
+    2. memberUpdate_process.jsp
+    3. register.jsp
+    4. processRegister.jsp
+    5. membreUpdate.js
+    6. register.js
+    7. resources/css 파일 전부
 </pre>
 
 ---
