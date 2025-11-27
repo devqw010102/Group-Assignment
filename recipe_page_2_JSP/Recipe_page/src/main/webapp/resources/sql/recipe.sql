@@ -18,9 +18,9 @@ SELECT * FROM USER_CONSTRAINTS
 
 SELECT * FROM RECIPE;
 
-SELECT * FROM RECIPE WHERE ID = '1';
+delete recipe where id = 23;
 
-DESC RECIPE
+DESC RECIPE;
 
 INSERT INTO recipe(member_id, json) VALUES ('admin', q'[
 {

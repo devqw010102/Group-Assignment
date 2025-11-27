@@ -43,7 +43,7 @@
 			out.print("<span style='color:red'>❌ 6 ~ 20 자 이내여야 합니다.</span>");
 			return;
 		}
-		
+		// 6 ~ 20자 이내 영문, 숫자 최소 1개이상 사용 정규식
 	    if(!pwd.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,20}$")) {
 	        out.print("<span style='color:red'>❌ 영문+숫자 조합이어야 합니다.</span>");
 	    } else {
