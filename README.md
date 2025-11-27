@@ -13,6 +13,7 @@
 ---
 
 ### 종합 후 수정사항
+##### 25-11-27
 <pre>
     1. memberUpdate.jsp
     2. memberUpdate_process.jsp
