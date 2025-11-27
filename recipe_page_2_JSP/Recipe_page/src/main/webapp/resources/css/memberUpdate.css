@@ -272,3 +272,16 @@ input[type="reset"]:hover {
 .btnRow .btn.delete:hover {
     background-color: #c62828;
 }
+
+/* Ajax 출력 텍스트 */
+.checkText {
+	font-size : 0.8em;
+	padding-left : 10px;
+}
+/*
+#idResult { }
+#pwdResult { }
+#pwdConResult { }
+#nameResult { }
+#phoneResult { }
+*/
