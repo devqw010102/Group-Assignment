@@ -19,7 +19,7 @@ body {
 .header {
   background: #74B243;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
 }
 
 #logo {
@@ -67,7 +67,7 @@ body {
 .container {
   width: 1200px;
   margin: 0 auto;
-  background-color: white;    
+  background-color: white;
   padding: 30px;
   box-sizing: border-box;
   display: grid;
@@ -85,8 +85,6 @@ body {
   flex-direction: column;
   box-shadow: 0 2px 6px rgba(0,0,0,.06);
 }
-
-
 
 /* ============ 인풋 공통 ============ */
 .recipeInput {
@@ -108,7 +106,7 @@ label {
 }
 
 #writer {
-  width: 150px !important;   
+  width: 150px !important;
   display: inline-block;
 }
 
@@ -135,9 +133,10 @@ label {
   margin-bottom: 20px;
 }
 
+/* 맨 위 입력줄: 재료명 / 수량 / 단위 / +재료추가 버튼 */
 .ingredientInputs {
   display: grid;
-  grid-template-columns: 1fr 120px 120px auto;
+  grid-template-columns: minmax(0, 1fr) 120px 120px auto;  /* 이름 크게, 수량/단위/버튼 고정폭 */
   gap: 10px;
   margin-bottom: 12px;
 }
@@ -149,6 +148,7 @@ label {
   border-radius: 8px;
   font-size: 14px;
   background: #fff;
+  box-sizing: border-box;
 }
 
 #btnAddIng {
@@ -157,35 +157,39 @@ label {
   border-radius: 8px;
   background: #f7f7f7;
   cursor: pointer;
+  font-size: 14px;
+  white-space: nowrap;
 }
 
 #btnAddIng:hover {
   background: #eee;
 }
 
+/* 아래쪽 리스트 전체 박스 */
 .ingredientList {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-
+/* 한 줄: 이름 / 수량 / 단위 / 삭제 */
 .ingRow {
   display: grid;
-  grid-template-columns: 1fr 120px 120px 70px; 
+  grid-template-columns: minmax(0, 1fr) 120px 120px 70px;
   gap: 10px;
   align-items: center;
 }
-.ingRow input,
-.ingRow select {
+
+/* 리스트에 표시되는 span도 input처럼 보이게 */
+.ingRow span {
   padding: 10px 12px;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 14px;
   background: #fff;
-  width: 100%;
   box-sizing: border-box;
 }
+
 .ingRow .ingDel {
   padding: 8px 10px;
   border: 1px solid #ddd;
@@ -194,58 +198,31 @@ label {
   cursor: pointer;
   font-size: 14px;
   box-sizing: border-box;
+  white-space: nowrap;
 }
 
 .ingRow .ingDel:hover {
   background: #fee;
   border-color: #e99;
 }
-
-.ingRow span {
-  padding: 8px 10px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  background: #fff;
-  font-size: 14px;
-  box-sizing: border-box;
-}
-
-
-.ingDel {
-  padding: 8px 10px;
-  border: 1px solid #ddd;
-  background: #fff;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-  box-sizing: border-box;
-}
-
-.ingDel:hover {
-  background: #fee;
-  border-color: #e99;
-}
-
-/* ============ 조리 순서 입력칸 ============ */
+/* ============ 조리 순서 (깨짐 방지 최종본) ============ */
 .stepBox {
   margin-bottom: 20px;
 }
 
-
 .stepInputs {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 12px;
   width: 100%;
 }
 
-
-#stepText.recipeInput {
-  flex: 1;
+#stepText {
+  width: 100%;
   margin-bottom: 0;
+  box-sizing: border-box;
 }
 
-/* + 순서추가 버튼 */
 #btnAddStep {
   padding: 10px 16px;
   border: 1px solid #ccc;
@@ -257,7 +234,6 @@ label {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
   white-space: nowrap;
 }
 
@@ -269,14 +245,14 @@ label {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  margin-top: 8px;
 }
 
-
 .stepRow {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   gap: 8px;
-  margin-top: 4px;
+  align-items: center;
 }
 
 .stepIndex {
@@ -284,36 +260,34 @@ label {
 }
 
 .stepTextView {
-  flex: 1;                      
   font-size: 14px;
   padding: 10px 12px;
   border: 1px solid #ddd;
   background: #fff;
   border-radius: 8px;
   box-sizing: border-box;
-
-  
   white-space: normal;
   word-break: break-all;
   max-width: 100%;
+  min-width: 0;
 }
 
 .stepDel {
-  flex-shrink: 0;                
   padding: 8px 12px;
   border: 1px solid #ddd;
   border-radius: 6px;
   background: #fff;
   cursor: pointer;
   font-size: 13px;
-  white-space: nowrap;           
+  white-space: nowrap;
 }
+
 .stepDel:hover {
   background: #fee;
   border-color: #e99;
 }
 
-
+/* 업로드 / 취소 버튼 */
 #formButtons {
   margin-top: 16px;
   display: flex;
@@ -334,14 +308,26 @@ label {
   background: #eee;
 }
 
-
-@media (max-width: 768px) {
+/* ============ 반응형 ============ */
+@media (max-width: 600px) {
   .ingredientInputs {
     grid-template-columns: 1fr 1fr;
   }
 
   .ingRow {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .stepInputs {
+    grid-template-columns: 1fr;
+  }
+
+  #btnAddStep {
+    width: 100%;
+  }
+
+  .stepRow {
+    grid-template-columns: auto minmax(0, 1fr);
   }
 }
 
@@ -364,9 +350,13 @@ label {
     grid-template-columns: 1fr;
   }
 
-  .ingRow {
-    grid-template-columns: 1fr;
-  }
+ .ingRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr 70px 70px; /* 이름, 수량, 단위, 삭제 */
+  gap: 10px;
+  align-items: center;
+}
+
 
   #formButtons {
     flex-direction: column;
