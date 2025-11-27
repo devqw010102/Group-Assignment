@@ -111,8 +111,9 @@
 				        <div class="row">
 				          <label class="textLabel" for="phone">전화번호</label>
 				          <div class="control">
-				            <input type="text" id="phone" name="phone" placeholder="예) 010-1234-5678">
+				            <input type="text" id="phone" name="phone" placeholder="예) 010-1234-5678" onkeyup = "checkPhone()">
 				          </div>
+				          <label id = "phoneResult" class = "checkText"></label>
 				        </div>
 				
 				        <!-- 주소 -->

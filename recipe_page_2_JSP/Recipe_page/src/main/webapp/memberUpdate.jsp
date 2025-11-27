@@ -61,6 +61,15 @@
             mail2 = m[1];
         }
     }
+    
+    // UX
+    // 전화번호 미입력 -> "" 처리
+    if("미입력".equals(phone))
+    	phone = "";
+    
+    // 주소 미입력 -> "" 처리
+    if("미입력".equals(address))
+    	address = "";
 %>
 
 <!DOCTYPE html>
@@ -158,8 +167,9 @@
                         <div class="row">
                             <label class="textLabel">전화번호</label>
                             <div class="control">
-                                <input type="text" name="phone" value="<%= phone %>">
+                                <input type="text" id = "phone" name="phone" value="<%= phone %>" onkeyup = "checkPhone()">
                             </div>
+                            <label id = "phoneResult" class = "checkText"></label>
                         </div>
 
                         <!-- 주소 -->
@@ -173,7 +183,7 @@
                         <!-- 버튼 줄 -->
                         <div class="btnRow">
                             <button type="button" class="btn ghost" onclick="clearAll()">리셋</button>
-                            <input type="submit" class="btn primary" value="정보 수정">
+                            <button type ="submit" class = "btn primary">정보 수정</button>
                             <button type="button" class="btn delete"
                                     onclick="if(confirmDelete()) location.href='memberDelete_process.jsp?id=<%= id %>';">
                                 회원 탈퇴

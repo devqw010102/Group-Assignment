@@ -5,6 +5,22 @@
 <%
     request.setCharacterEncoding("UTF-8");
 
+	String type = request.getParameter("type");
+
+	
+    // 전화번호 정규식 처리(ajax)
+    
+    if("checkPhone".equals(type)) {
+        String phone = request.getParameter("phone");
+        if(phone == null || phone.trim().isEmpty()) {
+            out.print(""); // 공백일 때 출력 없음
+        } else if(phone.matches("^01[016789]-?\\d{3,4}-?\\d{4}$")) {
+            out.print("<span style='color:green'>✔</span>");
+        } else {
+            out.print("<span style='color:red'>❌ 형식 오류</span>");
+        }
+        return; // AJAX 처리 후 여기서 끝내기
+    }
     // 로그인 여부 확인
     String sessionId = (String)session.getAttribute("sessionId");
     if (sessionId == null) {
@@ -63,10 +79,12 @@
         return;
     }
     
+
+    
     // 전화번호, 주소 null 처리
 	if(phone == null || phone.trim().equals("")) {
 		phone = "미입력";
-	}
+	}    
     if(address == null || address.trim().equals("")) {
     	address = "미입력";
     }

@@ -77,6 +77,29 @@
 		return;
 	}
 	
+	// 전화 번호 정규식 체크(ajax)
+	// 전화번호
+	String phone = request.getParameter("phone");
+	
+	if ("checkPhone".equals(type)) {
+	    if (phone == null || phone.trim().isEmpty()) {
+	        out.print("");
+	    } 
+	    else {
+	        // 전화번호 정규식 체크
+	        if (phone.matches("^01[016789]-?\\d{3,4}-?\\d{4}$")) {
+	            out.print("<span style='color:green'>✔</span>");
+	        } 
+	        else {
+	            out.print("<span style='color:red'>❌ 형식 오류</span>");
+	        }
+	    }
+	    return;
+	}
+	out.println("phone : " + phone);
+	if(phone == null || phone.trim().isEmpty())
+		phone = "미입력";
+	
 	// null 처리
 	String gender = request.getParameter("gender");
 	if(gender == null) {
@@ -105,11 +128,7 @@
         email = mail1 + "@" + mail2;
     }
 
-    // 전화번호
-	String phone = request.getParameter("phone");
-	if(phone == null || phone.trim().equals("")) {
-	    phone = "미입력";
-	}
+
 	
 	// 주소
 	String address = request.getParameter("address");
