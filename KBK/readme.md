@@ -1,17 +1,6 @@
 ## Today 
 <pre>
-   memberUpdate 
-   
-   -> 값 전달
-   
-   memberUpdateProcess
-   
-   1. 생년월일 비정상 입력(년, 월, 일 중 2개 이하 입력)시 처리
-   	=> 그냥 저장되었습니다 alert 시키면 해결될듯?
-   
-   2. 전화번호 정규식
-   
-   3. [전화번호, 주소] null 대신 '미입력' 입력
+
 </pre>
 
 ### TODO
@@ -79,4 +68,11 @@ https://www.10000recipe.com/index.html
    2. registerProcess, Script 수정(ajax 기능 활용한 실시간 check 기능 추가)
    3. 입력 데이터 차단(정규식), 필수 데이터 처리 완료
 </pre>
+
+#### 25-11-27
+<pre>
+   1. menu hover 범위와 클릭범위 일치 시킴
+   2. register 전화번호 정규식 구현(ajax)
+   3. memberUpdate 전화번호 정규식 구현(ajax)
+   4. memberUpdate [전화번호, 주소] null값 들어올 시 미입력으로 저장하게 수정
 </pre>
