@@ -1,3 +1,40 @@
+const phoneResult = document.getElementById("phoneResult");
+
+document.addEventListener("DOMContentLoaded", function() {
+	const form = document.getElementById("memberForm");
+	
+	if(form) form.onsubmit = function() {
+	    return checkPhone(); // 체크 결과에 따라 제출 여부 결정
+	};
+	
+	const phoneInput = document.getElementById("phone");
+	if(phoneInput) {
+	    phoneInput.addEventListener("keyup", checkPhone);
+	}
+});
+
+function checkPhone() {
+    const phone = document.getElementById("phone").value.trim();
+
+    // 공백이면 출력 지우고 제출 가능
+    if(!phone) {
+        phoneResult.textContent = "";
+        return true;
+    }
+
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "memberUpdate_process.jsp", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    xhr.onreadystatechange = function() {
+        if(xhr.readyState === 4 && xhr.status === 200) {
+            phoneResult.innerHTML = xhr.responseText;
+        }
+    }
+    xhr.send("phone=" + encodeURIComponent(phone) + "&type=checkPhone");
+
+    return true; // AJAX 체크는 비동기라서 제출 허용
+}
 
 // 삭제 여부 confirm
 function confirmDelete() {

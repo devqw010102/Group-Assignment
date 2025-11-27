@@ -2,6 +2,7 @@ const idResult = document.getElementById("idResult");
 const pwdResult = document.getElementById("pwdResult");
 const pwdConResult = document.getElementById("pwdConResult");
 const nameResult = document.getElementById("nameResult");
+const phoneResult = document.getElementById("phoneResult");
 
 document.addEventListener("DOMContentLoaded", function() {
 	const form = document.getElementById("registerForm");
@@ -16,13 +17,15 @@ function checkForm() {
 	const pwdResult = document.getElementById("pwdResult");
 	const pwdConResult = document.getElementById("pwdConResult");
 	const nameResult = document.getElementById("nameResult");
+	const phoneResult = document.getElementById("phoneResult");
 	
 	checkId();
 	checkPwd();
 	checkPwdCon();
 	checkName();
+	checkPhone();
 	
-	if(idResult.innerHTML.includes("✔") && pwdResult.innerHTML.includes("✔") && pwdConResult.innerHTML.includes("✔") && nameResult.innerHTML.includes("✔"))   {
+	if(idResult.innerHTML.includes("✔") && pwdResult.innerHTML.includes("✔") && pwdConResult.innerHTML.includes("✔") && nameResult.innerHTML.includes("✔") && !phoneResult.innerHTML.includes("❌"))   {
 		return true;	
 	}
 	alert("입력 내용을 확인하세요");
@@ -120,6 +123,27 @@ function checkName() {
 	};
 	
 	xhr.send("name=" + encodeURIComponent(name) + "&type=checkName");
+}
+
+function checkPhone() {
+	const phone = document.getElementById("phone").value.trim();
+	
+	if(!phone) {
+		phoneResult.textContent = "";
+		return;
+	}
+
+	
+	const xhr = new XMLHttpRequest();
+	xhr.open("POST", "processRegister.jsp", true);
+	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState === 4 && xhr.status === 200) {
+		    phoneResult.innerHTML = xhr.responseText;
+		}
+	}
+	xhr.send("phone=" + encodeURIComponent(phone) + "&type=checkPhone");
 }
 
 function onReset() {
