@@ -1,6 +1,17 @@
 ## Today 
 <pre>
-
+   memberUpdate 
+   
+   -> 값 전달
+   
+   memberUpdateProcess
+   
+   1. 생년월일 비정상 입력(년, 월, 일 중 2개 이하 입력)시 처리
+   	=> 그냥 저장되었습니다 alert 시키면 해결될듯?
+   
+   2. 전화번호 정규식
+   
+   3. [전화번호, 주소] null 대신 '미입력' 입력
 </pre>
 
 ### TODO
