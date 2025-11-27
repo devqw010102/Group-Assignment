@@ -1,62 +1,83 @@
-/* ============ 초기화 ============ */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background: #fff;
-  color: #222;
+    margin : 0;
+    padding : 0;
+    box-sizing: border-box;
 }
 
 #wrap {
-  width: 100%;
-  margin: 0 auto;
+    width : 100%;
+    margin : 0 auto;
 }
+/* Header */
 
-/* ============ 헤더 ============ */
 .header {
-  background: #74B243;
-  display: flex;
-  justify-content: center; 
+    background-color: #74B243;
+    display: flex;
+    justify-content: center;
+    
 }
 
 #logo {
-  width: 100px;
-  height: 100px;
-  margin-right: 10px;
+    width : 100px;
+    height : 100px;
+    margin-right : 10px;
+}
+
+/* Navigate */
+
+.navigate {
+
+}
+
+.navigate ul, li {
+    list-style: none;
 }
 
 .navigate ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  margin: 10px 0 0 10px;
-  padding: 0;
+    display: flex;
+    justify-content: center;
+    margin-left : 10px;
+    margin-top : 10px;
 }
 
 .navigate li {
-  padding: 10px;
-  margin: 10px;
-  color: #fff;
-  width: 200px;
-  cursor: pointer;
-  font-size: 1.2em;
-  font-weight: bold;
-  text-align: center;
-  border-radius: 8px;
+	display: flex;
+    align-items: center;      
+    justify-content: center;  
+    padding: 10px;
+    margin: 10px;
+    color: white;
+    width: 200px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px;
+    list-style: none;
 }
 
-.navigate li:hover {
-  background: rgba(255, 255, 255, .12);
+.navigate li a {
+    display: block;      
+    padding: 10px;       
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
 }
 
-.navigate a:visited,
-.navigate a:link {
-  text-decoration: none;
-  color: white;
+.navigate li a:hover {
+    background: rgba(255, 255, 255, .12);
 }
+
+.navigate li:first-child {
+    margin-left : 20px;
+}
+
+.navigate a:visited, a:link {
+    text-decoration: none;
+    color : white;
+}
+
 
 /* 바깥 박스 조금 카드 느낌 나게 */
 .content .container {

@@ -1,71 +1,81 @@
-/* ============ 초기화 ============ */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background: #fff;
-  color: #222;
+    margin : 0;
+    padding : 0;
+    box-sizing: border-box;
 }
 
 #wrap {
-  width: 100%;
-  margin: 0 auto;
+    width : 100%;
+    margin : 0 auto;
 }
+/* Header */
 
-/* ============ 헤더 ============ */
 .header {
-  background: #74B243;
-  display: flex;
-  justify-content: center;
+    background-color: #74B243;
+    display: flex;
+    justify-content: center;
+    
 }
 
 #logo {
-  width: 100px;
-  height: 100px;
-  margin-right: 10px;
+    width : 100px;
+    height : 100px;
+    margin-right : 10px;
+}
+
+/* Navigate */
+
+.navigate {
+
+}
+
+.navigate ul, li {
+    list-style: none;
 }
 
 .navigate ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  margin: 10px 0 0 10px;
-  padding: 0;
+    display: flex;
+    justify-content: center;
+    margin-left : 10px;
+    margin-top : 10px;
 }
 
-/* 🔹 예전과 같은 간격 / 모양 */
 .navigate li {
-  padding: 10px;
-  margin: 10px;
-  color: #fff;
-  width: 200px;
-  cursor: pointer;
-  font-size: 1.2em;
-  font-weight: bold;
-  text-align: center;
-  border-radius: 8px;
+	display: flex;
+    align-items: center;      
+    justify-content: center;  
+    padding: 10px;
+    margin: 10px;
+    color: white;
+    width: 200px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px;
+    list-style: none;
 }
 
-/* hover 배경도 예전 그대로 */
-.navigate li:hover {
-  background: rgba(255, 255, 255, .12);
-}
-
-/* 🔹 여기만 추가: a가 li 전체를 덮도록 */
 .navigate li a {
-  display: block;      /* 박스 전체 클릭 가능 */
-  width: 100%;
-  height: 100%;
+    display: block;      
+    padding: 10px;       
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
 }
 
-/* 링크 색은 그대로 흰색 */
-.navigate a:link,
-.navigate a:visited {
-  text-decoration: none;
-  color: #fff;
+.navigate li a:hover {
+    background: rgba(255, 255, 255, .12);
+}
+
+.navigate li:first-child {
+    margin-left : 20px;
+}
+
+.navigate a:visited, a:link {
+    text-decoration: none;
+    color : white;
 }
 
 /* ============ Content 기본 ============ */

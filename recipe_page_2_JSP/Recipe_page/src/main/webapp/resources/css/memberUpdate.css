@@ -8,13 +8,13 @@
     width : 100%;
     margin : 0 auto;
 }
-
 /* Header */
 
 .header {
     background-color: #74B243;
     display: flex;
     justify-content: center;
+    
 }
 
 #logo {
@@ -26,6 +26,7 @@
 /* Navigate */
 
 .navigate {
+
 }
 
 .navigate ul, li {
@@ -40,16 +41,32 @@
 }
 
 .navigate li {
-    padding : 10px;
-    margin : 10px;
-    color : white;
-    box-sizing: border-box;
-    width : 200px;
+	display: flex;
+    align-items: center;      
+    justify-content: center;  
+    padding: 10px;
+    margin: 10px;
+    color: white;
+    width: 200px;
     cursor: pointer;
     font-size: 1.2em;
     font-weight: bold;
     text-align: center;
     border-radius: 8px;
+    list-style: none;
+}
+
+.navigate li a {
+    display: block;      
+    padding: 10px;       
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.navigate li a:hover {
+    background: rgba(255, 255, 255, .12);
 }
 
 .navigate li:first-child {
@@ -61,9 +78,6 @@
     color : white;
 }
 
-.navigate li:hover {
-  background: rgba(255, 255, 255, .12);
-}
 
 /* 컨텐츠 영역 */
 .content {
