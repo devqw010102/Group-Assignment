@@ -192,6 +192,7 @@ function onSubmit() {
   const categoryInput = document.getElementById("recipeCategory");
   const jsonField     = document.getElementById("recipeJson");
   const form          = document.getElementById("recipeForm");
+  const imageInput = document.getElementById("recipeImage");
 
   if (!titleInput || !categoryInput || !jsonField || !form) return;
 
@@ -202,7 +203,7 @@ function onSubmit() {
     alert("레시피 이름을 입력하세요.");
     return;
   }
-  if (ingredients.length === 0) {
+  if (ingredients.length === 0) {	
     alert("재료를 한 개 이상 추가하세요.");
     return;
   }
@@ -210,12 +211,25 @@ function onSubmit() {
     alert("조리 순서를 한 개 이상 추가하세요.");
     return;
   }
+  
+  let imageName = "";
+  if (imageInput.files.length > 0) {
+      imageName = imageInput.files[0].name;
+  }
 
+  let ingJson = [];
+
+  ingredients.forEach((ing) => {
+    const ingStr = `${ing.name} : ${ing.amount}${ing.unit}`;
+    ingJson.push(ingStr);
+  });
+  
   const data = {
-    title: title,
-    category: category,
-    ingredients: ingredients, // {name, amount(string), unit}
-    steps: steps              // 문자열 배열
+	name: title,
+	category: category,
+	ingredient: ingJson,		// 문자열 배열
+	cook: steps,	
+	image: imageName
   };
 
   jsonField.value = JSON.stringify(data);
