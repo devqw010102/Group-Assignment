@@ -36,6 +36,7 @@ body {
   padding: 0;
 }
 
+/* 🔹 예전과 같은 간격 / 모양 */
 .navigate li {
   padding: 10px;
   margin: 10px;
@@ -48,14 +49,23 @@ body {
   border-radius: 8px;
 }
 
+/* hover 배경도 예전 그대로 */
 .navigate li:hover {
   background: rgba(255, 255, 255, .12);
 }
 
-.navigate a:visited,
-.navigate a:link {
+/* 🔹 여기만 추가: a가 li 전체를 덮도록 */
+.navigate li a {
+  display: block;      /* 박스 전체 클릭 가능 */
+  width: 100%;
+  height: 100%;
+}
+
+/* 링크 색은 그대로 흰색 */
+.navigate a:link,
+.navigate a:visited {
   text-decoration: none;
-  color: white;
+  color: #fff;
 }
 
 /* ============ Content 기본 ============ */
