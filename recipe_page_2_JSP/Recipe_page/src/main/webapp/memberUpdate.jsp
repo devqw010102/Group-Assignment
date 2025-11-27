@@ -32,6 +32,12 @@
             phone   = rs.getString("phone");
             address = rs.getString("address");
         }
+        if (phone == null || "미입력".equals(phone)) {
+            phone = "";
+        }
+        if (address == null) {
+            address = "";
+        }
     } catch(Exception e) {
         e.printStackTrace();
         out.println("회원 정보 조회 실패");
@@ -104,9 +110,13 @@
 			    if ("1".equals(error)) {
 			%>
 			        <script>alert("입력 정보가 올바르지 않습니다. 다시 확인해주세요.");</script>
-			<%
-			    }
-			%>
+			 <%
+        } else if ("2".equals(error)) {
+    %>
+            <script>alert("전화번호 형식이 올바르지 않습니다.\n예) 010-1234-5678");</script>
+    <%
+        }
+    %>
 </head>
 
 <body>
@@ -186,10 +196,12 @@
                         </div>
 
                         <!-- 전화번호 -->
-                        <div class="row">
+                         <div class="row">
                             <label class="textLabel">전화번호</label>
                             <div class="control">
-                                <input type="text" name="phone" value="<%= phone %>">
+                                <input type="text" name="phone"
+                                       value="<%= phone %>"
+                                       placeholder="예) 010-1234-5678">
                             </div>
                         </div>
 
