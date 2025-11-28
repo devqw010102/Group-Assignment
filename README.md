@@ -22,6 +22,12 @@
     6. register.js
     7. resources/css 파일 전부
 </pre>
+##### 25-11-28
+<pre>
+    1. recipeUpdate.js
+    2. index.jsp
+    3. index.css
+</pre>
 
 ---
 
