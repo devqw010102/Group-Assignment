@@ -110,7 +110,6 @@ function onSubmit() {
 	
 	document.getElementById('recipeJson').value = JSON.stringify(recipeObj);
 	// console.log("보낼 JSON:", JSON.stringify(recipeObj));
-	
 	document.getElementById('updateForm').submit();
 }
 
