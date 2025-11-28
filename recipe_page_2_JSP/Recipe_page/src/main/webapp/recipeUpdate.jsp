@@ -57,13 +57,13 @@
 							request.setAttribute("category", category);
 						%>
 				   		<label for="recipeCategory">카테고리</label>	   		
-		   			 	<select id="recipeCategory" class="recipeInput" name = "category">		   			 		
-							<option value = <%= category %> ${category == '한식' ? 'selected' : '' }>한식</option>
-							<option value = <%= category %> ${category == '양식' ? 'selected' : '' }>양식</option>
-							<option value = <%= category %> ${category == '중식' ? 'selected' : '' }>중식</option>
-							<option value = <%= category %> ${category == '일식' ? 'selected' : '' }>일식</option>
-							<option value = <%= category %> ${category == '디저트' ? 'selected' : '' }>디저트</option>
-							<option value = <%= category %> ${category == '기타' ? 'selected' : '' }>기타</option>
+						<select id="recipeCategory" class="recipeInput" name="category">
+						    <option value="한식" <%= category.equals("한식") ? "selected" : "" %>>한식</option>
+						    <option value="양식" <%= category.equals("양식") ? "selected" : "" %>>양식</option>
+						    <option value="중식" <%= category.equals("중식") ? "selected" : "" %>>중식</option>
+						    <option value="일식" <%= category.equals("일식") ? "selected" : "" %>>일식</option>
+						    <option value="디저트" <%= category.equals("디저트") ? "selected" : "" %>>디저트</option>
+						    <option value="기타" <%= category.equals("기타") ? "selected" : "" %>>기타</option>
 						</select>
 						
 						<%
