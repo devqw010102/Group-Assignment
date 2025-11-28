@@ -136,10 +136,39 @@
 /* 필터 */
 
 .filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;             
     margin: 20px 0;
-    text-align: center;
+    padding: 10px 15px;
+    background: #f7f7f7;
+    border-radius: 8px;
+    border: 1px solid #ddd;
 }
-#filterCategory {
-    padding: 8px 12px;
-    font-size: 1rem;
+
+
+.filter-label {
+    font-weight: 600;
+    font-size: 15px;
+    color: #333;
+}
+
+
+.filter-select {
+    padding: 6px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.filter-select:hover {
+    border-color: #999;
+}
+
+.filter-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.6);
 }
