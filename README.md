@@ -26,8 +26,8 @@
 <pre>
     1. recipeUpdate.js
     2. recipeUpdate.jsp
-    2. index.jsp
-    3. index.css
+    3. index.jsp
+    4. resources/css 파일 전부(footer 디자인 수정)
 </pre>
 
 ---
