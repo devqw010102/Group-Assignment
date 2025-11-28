@@ -189,3 +189,14 @@ table.admin-table tbody tr:hover {
     background: #ffecec;
     border-color: #ff6b6b;
 }
+
+
+/* Footer */
+.footer {
+    background: #333;       /* 어두운 그레이 */
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
