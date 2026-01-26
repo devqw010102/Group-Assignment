@@ -1,118 +1,38 @@
-# 레시피 페이지 만들기
+# 🍳 Recipe Service Project (JSP & Spring Boot)
 
-### 조별과제
+> **Spring Boot와 JSP를 활용한 사용자 맞춤형 레시피 공유 플랫폼입니다.**</br>
+> HTML 프로젝트를 JSP로 마이그레이션하며 구조를 재설계했고, 특히 스크립트 위주의 비동기 로딩을 구현하는 데 집중했습니다.
 
-김병국, 강전홍, 박영기, 박주승
-
----
-### Todo
-<pre>
-    1. 설계서 작성(페이지 별 인월할당 필요)
-</pre>
----
-
-### 종합 후 수정사항
-##### 25-11-27
-<pre>
-    1. memberUpdate.jsp
-    2. memberUpdate_process.jsp
-    3. register.jsp
-    4. processRegister.jsp
-    5. membreUpdate.js
-    6. register.js
-    7. resources/css 파일 전부
-</pre>
-##### 25-11-28
-<pre>
-    1. recipeUpdate.js
-    2. recipeUpdate.jsp
-    3. index.jsp
-    4. resources/css 파일 전부(footer 디자인 수정)
-</pre>
+## 🛠 Tech Stack
+- **Backend:** Java 21, Spring Boot, Spring Data JPA, Spring Security
+- **Frontend:** JSP, JavaScript, HTML/CSS
+- **Database:** Oracle
+- **Server:** Tomcat 10.1
 
 ---
 
-### 페이지 담당
+## 🚀 Key Features & Implementation Details
 
- | 김병국 | 강전홍 | 박영기 | 박주승 |
- | ----- | ------ | ------| ------|
- | index | login | register | addRecipe |
- | recipeUpdate | |          | memberUpdate |  
- | login, register 기능 | | | adminPage |
+### 1. 효율적인 데이터 모델링 (JPA)
+- **Entity 설계 최적화:** 비즈니스 로직을 분석하여 **DB 정규화**를 진행하고, 데이터 무결성을 확보했습니다.
+- **연관관계 관리:** JPA의 **지연 로딩(Lazy Loading)** 전략을 사용하여 불필요한 데이터 조회를 방지하고 성능 최적화를 고려했습니다.
 
----
-
-### 폴더 정리
-
-<table>
-  <tr>
-    <td>폴더 이름</td>
-    <td>폴더 내용</td>
-  </tr>
-  <tr>
-    <td>KBK</td>
-    <td>김병국 개인폴더</td>
-  </tr>
-  <tr>
-    <td>KJH</td>
-    <td>강전홍 개인폴더</td>
-  </tr>
-  <tr>
-    <td>PYG</td>
-    <td>박영기 개인폴더</td>
-  </tr>
-  <tr>
-    <td>PJS</td>
-    <td>박주승 개인폴더</td>
-  </tr>
-  <tr>
-    <td>recipe_page</td>
-    <td>페이지 종합 폴더(html)</td>
-  </tr>
-  <tr>
-      <td>recipe_page_2_JSP</td>
-      <td>페이지 종합 폴더(JSP)</td>
-  </tr>
-</table>
+### 2. 사용자 중심 UI/UX 구현 (JSP)
+- **JSP 기반 동적 렌더링:** 서버 사이드 렌더링을 통해 레시피 데이터와 사용자 정보를 동적으로 화면에 구성했습니다.
+- **비동기 데이터 처리:** JavaScript를 활용하여 효율적인 데이터 요청 및 사용자 인터랙션을 처리했습니다.
 
 ---
 
-#### 로그인 페이지
-<pre>
-  담당 : 강전홍
-  파일 : login
-</pre>
+## 📝 Project Review & Growth
+초기 설계의 복잡성을 **DB 정규화와 JPA 최적화**를 통해 해결하며, 데이터베이스 설계가 시스템 유지보수에 미치는 영향을 깊이 체화했습니다. 이를 통해 데이터 무결성을 고려하는 개발자로 성장했습니다.
 
-#### 회원가입 페이지
-<pre>
-  담당 : 박영기
-  파일 : register
-</pre>
+---
 
-#### 레시피 페이지
-<pre>
-  담당 : 김병국
-  파일 : index, recipe_object.js, recipeList
-  레시피 내용 : 이미지, 이름, 재료, 조리방법
-
-  index.js 주석 추가 完
-</pre>
-
-#### 레시피 추가 페이지
-<pre>
-  담당 : 박주승
-  파일 : addRecipt
-  레시피 내용 : 레시피 페이지와 동일
-</pre>
-
-#### 회원 수정 페이지
-<pre>
-    담당 : 미정
-    파일 : memberUpdate.html, memberUpdate.css, memberUpdate.js
-    내용 : 로그인된 회원 정보의 수정(아이디, 비밀번호)
-</pre>
-
-### ERD
-<img width="294" height="728" alt="image" src="https://github.com/user-attachments/assets/66420ade-49a7-4baf-938b-c38a5e4a6e9e" />
-
-
+### 📂 Directory Structure
+```text
+src/main/
+├── java/.../config/     # Spring Security 보안 설정
+├── java/.../controller/ # 레시피 및 사용자 요청 처리
+├── java/.../entity/     # JPA 기반 데이터 모델링
+├── java/.../repository/ # DB 접근 로직 (Spring Data JPA)
+└── webapp/WEB-INF/views/ # JSP 기반 화면 구성
